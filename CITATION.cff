@@ -2,14 +2,17 @@ cff-version: 1.2.0
 message: "Please cite the associated manuscript and archived software release."
 title: "Prediction Consistency Is Not Explanation Consistency: Reverse-Complement Symmetry in Genomic Neural Networks"
 type: software
-version: "0.1.0-draft"
+version: "1.0.0"
 authors:
-  - name: "AUTHOR DETAILS REQUIRED BEFORE RELEASE"
+  - family-names: "Li"
+    given-names: "Yilong"
+    email: "lyilong982@gmail.com"
+    orcid: "https://orcid.org/0009-0009-5724-6208"
 abstract: "Code, frozen configurations, selected outputs, and figure-generation materials for evaluating reverse-complement prediction and attribution consistency in genomic neural networks."
 keywords:
   - reverse complement
   - genomic neural networks
   - attribution
   - reproducibility
-repository-code: "https://github.com/REPOSITORY-URL-REQUIRED"
-license: "LicenseRef-Proprietary"
+repository-code: "https://github.com/3ason666/-rc-symmetry-genomic-neural-networks"
+license: "MIT"

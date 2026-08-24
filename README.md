@@ -1,6 +1,6 @@
 # Prediction Consistency Is Not Explanation Consistency
 
-This repository contains the code, frozen configurations, selected machine-readable outputs, and figure-generation inputs for the study **“Prediction Consistency Is Not Explanation Consistency: Reverse-Complement Symmetry in Genomic Neural Networks.”** It is a release candidate for archival and public dissemination; it has not yet been assigned a public GitHub URL, release tag, or DOI.
+This repository contains the code, frozen configurations, selected machine-readable outputs, and figure-generation inputs for the study **“Prediction Consistency Is Not Explanation Consistency: Reverse-Complement Symmetry in Genomic Neural Networks.”** The publication repository is hosted at [3ason666/-rc-symmetry-genomic-neural-networks](https://github.com/3ason666/-rc-symmetry-genomic-neural-networks). A release tag and archival DOI will be added when issued.
 
 ## Project overview
 
@@ -95,7 +95,7 @@ Phase 3C is the primary external analysis. Phase 3E is a training-only near-dupl
 
 ## Citation
 
-`CITATION.cff` is a draft. Author names, ORCID identifiers, the public repository URL, release tag, and archival DOI must be supplied before publication.
+Citation metadata, including the author, ORCID identifier, and repository URL, are provided in `CITATION.cff`. The release tag and archival DOI will be added after the archival release is created.
 
 ## AI-use disclosure
 
@@ -103,4 +103,4 @@ OpenAI Codex was used for code and documentation assistance, audit support, and 
 
 ## License
 
-No public-use license has yet been selected. The current `LICENSE` reserves all rights and does not grant reuse permission. The authors must choose and approve a final license before making the repository public.
+The original contents of this repository are released under the MIT License; see `LICENSE`. Third-party resources remain subject to their original terms and are not relicensed by this repository.
