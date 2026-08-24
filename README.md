@@ -1,6 +1,8 @@
 # Prediction Consistency Is Not Explanation Consistency
 
-This repository contains the code, frozen configurations, selected machine-readable outputs, and figure-generation inputs for the study **“Prediction Consistency Is Not Explanation Consistency: Reverse-Complement Symmetry in Genomic Neural Networks.”** The publication repository is hosted at [3ason666/-rc-symmetry-genomic-neural-networks](https://github.com/3ason666/-rc-symmetry-genomic-neural-networks). A release tag and archival DOI will be added when issued.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22079144.svg)](https://doi.org/10.5281/zenodo.22079144)
+
+This repository contains the code, frozen configurations, selected machine-readable outputs, and figure-generation inputs for the study **“Prediction Consistency Is Not Explanation Consistency: Reverse-Complement Symmetry in Genomic Neural Networks.”** The publication repository is hosted at [3ason666/-rc-symmetry-genomic-neural-networks](https://github.com/3ason666/-rc-symmetry-genomic-neural-networks). Release `V1.0.0` is archived at [Zenodo](https://doi.org/10.5281/zenodo.22079145).
 
 ## Project overview
 
@@ -95,7 +97,7 @@ Phase 3C is the primary external analysis. Phase 3E is a training-only near-dupl
 
 ## Citation
 
-Citation metadata, including the author, ORCID identifier, and repository URL, are provided in `CITATION.cff`. The release tag and archival DOI will be added after the archival release is created.
+Citation metadata, including the author, ORCID identifier, repository URL, release tag, and version-specific DOI, are provided in `CITATION.cff`. Cite release `V1.0.0` using DOI [`10.5281/zenodo.22079145`](https://doi.org/10.5281/zenodo.22079145). The concept DOI [`10.5281/zenodo.22079144`](https://doi.org/10.5281/zenodo.22079144) resolves to the latest archived version.
 
 ## AI-use disclosure
 
