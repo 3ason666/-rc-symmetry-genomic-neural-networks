@@ -1,0 +1,118 @@
+project_name: phase2c3_train_only_remediation
+protocol_revision: phase2c3_post_p2c2_train_only_remediation_v1
+protocol_frozen_date: 2026-08-22
+scope: exploratory_remediation_selection_not_independent_confirmation
+audit_predecessors:
+  phase2c1: results/phase2c1_cpu_calibration
+  phase2c2: results/phase2c2_c4_multiseed_validation
+trigger:
+  failed_gate: absolute_matches_cnn_for_every_seed
+  observed_seed: 2026
+  observed_absolute_minus_cnn_auroc: -0.033743696620917585
+  frozen_limit: 0.03
+  interpretation: >-
+    c4 Absolute AUROC was stable across seeds; the failure was a small paired
+    performance-gap exceedance when the CNN comparator was strongest.
+device: cpu
+cpu_threads: 6
+dataset:
+  path: data/phase2/processed/phase2_matched_dataset.csv
+  sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  sequence_length: 256
+  allowed_training_splits: [train, validation]
+  source_split: train
+  expected_source_rows: 16318
+  forbidden_model_splits: [validation, test]
+  test_policy: sealed_no_model_access
+cross_validation:
+  method: frozen_three_fold_chromosome_cross_validation
+  folds:
+    - fold_id: fold_a
+      holdout_chromosomes: [chr1, chr13, chr16, chr17, chr21]
+      expected_holdout_rows: 5602
+    - fold_id: fold_b
+      holdout_chromosomes: [chr4, chr6, chr12, chr15, chr20]
+      expected_holdout_rows: 5382
+    - fold_id: fold_c
+      holdout_chromosomes: [chr5, chr7, chr9, chr10, chr19]
+      expected_holdout_rows: 5334
+  require_every_train_chromosome_exactly_once_as_holdout: true
+cnn_model:
+  conv_channels: 32
+  kernel_size: 15
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 7
+transformer_model:
+  sequence_length: 256
+  patch_size: 4
+  d_model: 32
+  n_heads: 4
+  num_layers: 3
+  feedforward_dim: 64
+  dropout: 0.1
+training:
+  seeds: [42, 123, 2026]
+  batch_size: 128
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  weight_decay: 0.0001
+  checkpoint_selection_metric: inner_validation_loss
+  cnn:
+    learning_rate: 0.001
+    max_epochs: 30
+    patience: 5
+    optimizer: adam
+    scheduler: none
+remedies:
+  - remedy_id: r0_c4_baseline
+    description: Exact P2C.2 c4 optimization budget reproduced inside train-only CV.
+    learning_rate: 0.0005
+    max_epochs: 30
+    patience: 5
+    optimizer: adam
+    scheduler: none
+  - remedy_id: r1_c4_high_lr_long
+    description: Higher initial learning rate and longer early-stopping window.
+    learning_rate: 0.001
+    max_epochs: 45
+    patience: 8
+    optimizer: adam
+    scheduler: none
+  - remedy_id: r2_c4_adamw_cosine
+    description: Decoupled weight decay with cosine learning-rate decay.
+    learning_rate: 0.001
+    max_epochs: 45
+    patience: 8
+    optimizer: adamw
+    scheduler: cosine
+    cosine_eta_min: 0.00001
+endpoints:
+  primary: absolute_minus_cnn_inner_validation_auroc
+  secondary:
+    - transformer_inner_validation_auroc
+    - transformer_inner_validation_auprc
+    - transformer_prediction_mean_absolute_difference
+    - checkpoint_reload_max_abs_probability_error
+selection:
+  performance_match_max_abs_auroc_difference: 0.03
+  transformer_minimum_auroc: 0.80
+  require_both_for_every_fold_seed: true
+  ordered_ranking_rules:
+    - maximize_number_of_fold_seed_matches
+    - minimize_worst_absolute_auroc_gap
+    - maximize_minimum_transformer_auroc
+    - maximize_mean_transformer_auroc
+    - minimize_mean_prediction_asymmetry
+    - minimize_summed_training_seconds
+  select_only_if_all_nine_fold_seed_pairs_pass: true
+statistics:
+  paired_bootstrap_replicates: 10000
+  paired_bootstrap_seed: 20260822
+decision:
+  access_original_validation: false
+  unseal_test_now: false
+  proceed_to_phase2d_from_this_experiment: false
+  independent_confirmation_required_after_selection: true
+  acceptable_confirmation_source: new_external_or_otherwise_untouched_validation_resource

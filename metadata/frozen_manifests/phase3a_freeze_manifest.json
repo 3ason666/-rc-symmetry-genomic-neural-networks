@@ -1,0 +1,27 @@
+{
+  "status": "phase3a_selection_frozen",
+  "protocol_revision": "phase3a_external_replication_selection_v2",
+  "freeze_date": "2026-08-23",
+  "results_observed_before_freeze": false,
+  "training_allowed": false,
+  "confirmatory_task_ids": [
+    "p3_gata1_fetal",
+    "p3_ctcf_gm12878"
+  ],
+  "selected_file_accessions": [
+    "ENCFF802VPT",
+    "ENCFF305RPQ",
+    "ENCFF253NOJ",
+    "ENCFF404PZM",
+    "ENCFF138REW",
+    "ENCFF796WRU",
+    "ENCFF687HBT"
+  ],
+  "sha256": {
+    "config": "8c238452db8648f446ee6a139ef62201d8a084d489d1d9d59be230a951413cd6",
+    "protocol": "70a21a50bf1722f8e7c44d508e93389ce9b8fe93d538c2cbfab5f5346363cdf3",
+    "candidate_registry": "a0ec5a31ba50b77a3c290443d92d56bf143f2355043493f1b7478a4db20eaa43",
+    "phase2f_completion_lock": "1e79e860a477465b88b6ccd6e4017003d2a4636bd3cde0b8f244764fdc1c30a8"
+  },
+  "next_gate": "download_md5_qc_dataset_construction_and_split_freeze"
+}

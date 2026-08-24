@@ -1,0 +1,53 @@
+project_name: phase15_shortcut_shift_pilot
+device: cpu
+data:
+  regime: semi_synthetic_shortcut
+  sequence_length: 128
+  causal_motif: TGATTTAT
+  decoy_motifs: [TGACTTAT, TGATCTAT, TAATTTAT]
+  causal_mutation_probabilities: [0.10, 0.50, 0.40]
+  decoy_probability_by_label: {positive: 0.70, negative: 1.00}
+  train_size: 1200
+  validation_size: 300
+  test_size: 400
+  data_seed: 15151
+  gc_by_split:
+    train: {positive: 0.58, negative: 0.42}
+    validation: {positive: 0.58, negative: 0.42}
+    test: {positive: 0.50, negative: 0.50}
+  label_noise_by_split: {train: 0.05, validation: 0.00, test: 0.00}
+  shortcut:
+    enabled: true
+    pattern: GGGGGG
+    edge_width: 20
+    probability_by_split:
+      train: {positive: 0.95, negative: 0.05}
+      validation: {positive: 0.95, negative: 0.05}
+      test: {positive: 0.50, negative: 0.50}
+model:
+  conv_channels: 24
+  kernel_size: 9
+  second_conv: true
+  second_conv_channels: 16
+  second_kernel_size: 5
+training:
+  seeds: [42]
+  model_types: [CNN-Raw, CNN-Aug, CNN-Pair, CNN-PostHoc, CNN-RCPS]
+  batch_size: 64
+  max_epochs: 8
+  patience: 3
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  selection_metric: validation_loss
+interpretation:
+  method: ism
+  difference: logit
+  positive_samples: 20
+  sample_seed: 2718
+  batch_size: 512
+  top_k: 8
+  prediction_consistent_epsilon: 0.01
+  attribution_asymmetric_pearson: 0.90

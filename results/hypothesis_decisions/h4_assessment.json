@@ -1,0 +1,12 @@
+{
+  "hypothesis": "H4 attribution symmetry is not equivalent to biological correctness",
+  "rcps_phase2d_symmetry_gate_required": true,
+  "diagnostic": "top7 motif recall < 0.5 OR motif-minus-flank logit specificity <= 0",
+  "estimate": 0.49957955891908423,
+  "ci95_low": 0.3888888888888889,
+  "ci95_high": 0.6169676642586857,
+  "p_two_sided": 0.00019998000199980003,
+  "n": 324,
+  "verdict": "supported_as_distinction",
+  "interpretation_limit": "The diagnostic does not label every case biologically wrong and does not prove a causal mechanism."
+}

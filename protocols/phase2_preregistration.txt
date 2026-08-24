@@ -1,0 +1,69 @@
+PHASE 2 REAL-LABEL PREREGISTRATION
+Version: 1.0 frozen for P2 pilot
+Date: 2026-08-22
+
+STATUS
+BED download/QC, reference-equivalence validation, candidate retrieval, matching, chromosome
+assignment, and sequence-level leakage checks have passed. The frozen P2 pilot dataset may
+now be used for formal training. Test outputs remain sealed until model-selection completion.
+
+PRIMARY TASK
+Binary classification of 256 bp GRCh38 windows centered on K562 GATA1 ChIP-seq peak
+summits. Primary positive candidate: ENCSR000EFT / ENCFF148JKK. Primary negative pool:
+K562 bulk ATAC-seq ENCSR868FGK / ENCFF333TAT after exclusion of GATA1 peaks and buffers.
+
+POSITIVE SAMPLES
+Use released GRCh38 optimal IDR thresholded narrowPeak calls. Center each window on the
+narrowPeak summit. Exclude invalid summit offsets instead of silently clamping them. Remove
+windows containing N, outside bounds, overlapping the current ENCODE GRCh38 blacklist,
+outside primary chromosomes, or overlapping another retained positive after deterministic
+de-duplication. The primary matched task additionally requires overlap with a K562 ATAC peak;
+assign the maximum signal of overlapping ENCFF333TAT peaks. This is required so ATAC-signal
+matching is defined for both labels. The all-GATA1 candidate set remains available for a
+separately declared sensitivity analysis.
+
+NEGATIVE SAMPLES
+Draw negatives from K562 ATAC-accessible regions that do not overlap GATA1 peaks and are
+not within 128 bp of a GATA1 peak boundary. Match 1:1 to positives within each split by
+chromosome, 0.02-wide GC bins, accessibility-signal quantile, and window length. Random
+genomic negatives are a sensitivity analysis and are not the primary negative class.
+
+SPLITTING AND LEAKAGE CONTROL
+Use chromosome holdout only. Do not randomly split windows. Before any model result is
+viewed, compute retained class counts per chromosome and apply the deterministic allocation
+procedure in protocols/chromosome_split_plan.txt. Reject interval overlap, same-peak reuse,
+exact duplicate sequences, and reverse-complement canonical-key collisions across splits.
+
+MODELS
+The first real-label pilot uses CNN-Raw, CNN-Aug, and CNN-Pair on identical saved splits.
+Post-hoc Conjoined and CNN-RCPS are added after the real-data pipeline passes. Transformer
+comparisons are later and must use matched data, model-selection rules, and training budget.
+
+ATTRIBUTION
+Exact ISM on a frozen subset is primary. Integrated Gradients, DeepLIFT/DeepSHAP, and
+additional gradient methods are secondary cross-method checks. Baselines must be declared
+in advance and paired under reverse complementation. All nucleotide matrices are aligned by
+reversing positions and mapping A<->T and C<->G.
+
+TEST-SET POLICY
+Validation data may select epochs and hyperparameters. Test labels and model outputs remain
+unexamined until the dataset manifest, chromosome assignment, primary endpoints, and
+software checks are frozen. All completed runs are retained, including failed or unfavorable
+runs.
+
+GO/NO-GO GATES BEFORE FORMAL TRAINING
+1. Every BED input is released, non-empty, GRCh38, and matches its recorded MD5. Sequence
+   equivalence must pass by identical chr1-chr22 component accession versions and lengths
+   plus one deterministic NCBI RefSeq sequence check per autosome.
+2. The retained GATA1 peak count is sufficient for the planned balanced pilot.
+3. The GATA1 optimal-peak analysis is accompanied by a conservative/high-confidence
+   sensitivity set or another predeclared robustness analysis because IDR reproducibility is
+   currently marked borderline.
+4. Matched negatives can be constructed without replacement at the required ratio.
+5. Chromosome split counts are acceptable and the split is written once, then made read-only.
+6. Leakage audits pass for genomic intervals, exact sequences, and RC canonical keys.
+7. No test model output has been viewed.
+
+DECISION AT VERSION 1.0
+All seven data gates passed. GO for the frozen P2 pilot training workflow.
+The test set remains sealed for checkpoint or hyperparameter selection.

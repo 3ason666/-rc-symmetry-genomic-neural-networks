@@ -1,0 +1,46 @@
+{
+  "figures": {
+    "figure1": [
+      "paper_figures/main/figure1/figure1.svg",
+      "paper_figures/main/figure1/figure1.pdf",
+      "paper_figures/main/figure1/figure1.png"
+    ],
+    "figure2": [
+      "paper_figures/main/figure2/figure2.svg",
+      "paper_figures/main/figure2/figure2.pdf",
+      "paper_figures/main/figure2/figure2.png"
+    ],
+    "figure3": [
+      "paper_figures/main/figure3/figure3.svg",
+      "paper_figures/main/figure3/figure3.pdf",
+      "paper_figures/main/figure3/figure3.png"
+    ],
+    "figure4": [
+      "paper_figures/main/figure4/figure4.svg",
+      "paper_figures/main/figure4/figure4.pdf",
+      "paper_figures/main/figure4/figure4.png"
+    ],
+    "figure5": [
+      "paper_figures/main/figure5/figure5.svg",
+      "paper_figures/main/figure5/figure5.pdf",
+      "paper_figures/main/figure5/figure5.png"
+    ]
+  },
+  "figure3a_rows": 720,
+  "figure3a_unique_samples": 80,
+  "figure3b": {
+    "eligible_n": 63,
+    "median_l1": 0.3122143250106288,
+    "sample_id": "ENCFF148JKK:12229",
+    "fold_id": "fold_a",
+    "seed": 123,
+    "p_forward": 0.95366335,
+    "p_rc": 0.9476568,
+    "prediction_difference": 0.0060065388679504,
+    "absolute_normalized_l1": 0.3122143250106288,
+    "npz_path": "paper_figures/data/phase2f_one_time_test/runs/fold_a__cnn_raw__seed_123/test_exact_ism_attributions.npz"
+  },
+  "fetal_h1b_display": "NE / NOT ESTIMABLE",
+  "ctcf_h2_sensitivity_ci_crosses_zero": true,
+  "new_discrepancy": false
+}

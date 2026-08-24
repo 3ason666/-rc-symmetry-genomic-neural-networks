@@ -1,0 +1,11 @@
+family,contrast,endpoint,n_folds,n_fold_seed_cells,n_paired_rows,estimate,ci95_low,ci95_high,bootstrap_replicates,bootstrap_seed,method
+prediction_primary,CNN-Aug_minus_CNN-Raw,prediction_difference,3,9,48954,-0.01469690091217385,-0.022604657756265852,-0.0038560178818798038,10000,20260822,
+prediction_primary,CNN-RCPS_minus_CNN-Aug,prediction_difference,3,9,48954,-0.08680834330005324,-0.09234981753264768,-0.07905590227086111,10000,20260823,
+attribution_primary,CNN-Aug_minus_CNN-Raw,absolute_normalized_l1,3,9,720,-0.02805712402537862,-0.051030763413144484,-0.0006747214793988015,10000,20260822,exact_ism
+attribution_primary,CNN-RCPS_minus_CNN-Aug,absolute_normalized_l1,3,9,720,-0.3104758938259818,-0.3353059571651132,-0.2834152920254506,10000,20260823,exact_ism
+attribution_secondary,CNN-Aug_minus_CNN-Raw,absolute_normalized_l1,3,9,720,-0.023277965396998626,-0.05521998759479489,0.011311277716623675,10000,20260822,integrated_gradients
+attribution_secondary,CNN-RCPS_minus_CNN-Aug,absolute_normalized_l1,3,9,720,-0.4288045941576084,-0.46208855502305624,-0.3888694050574879,10000,20260823,integrated_gradients
+attribution_secondary,CNN-Aug_minus_CNN-Raw,absolute_normalized_l1,3,9,720,-0.022076279040312254,-0.05699829475271213,0.016418378228683,10000,20260822,deeplift
+attribution_secondary,CNN-RCPS_minus_CNN-Aug,absolute_normalized_l1,3,9,720,-0.44677307572797287,-0.4813975467183208,-0.40657003153533283,10000,20260823,deeplift
+attribution_secondary,CNN-Aug_minus_CNN-Raw,absolute_normalized_l1,3,9,720,-0.01974957231434674,-0.04721720893620065,0.010131922079370187,10000,20260822,gradient_shap
+attribution_secondary,CNN-RCPS_minus_CNN-Aug,absolute_normalized_l1,3,9,720,-0.3123926220127345,-0.3510481629775905,-0.27124924921046756,10000,20260823,gradient_shap

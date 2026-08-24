@@ -1,0 +1,16 @@
+{
+  "phase": "Phase 2D confirmatory RC symmetry",
+  "expected_training_runs": 27,
+  "observed_training_runs": 27,
+  "expected_attribution_rows": 8640,
+  "observed_attribution_rows": 8640,
+  "checkpoint_reload_gate_passed": true,
+  "rcps_prediction_gate_passed": true,
+  "rcps_feature_gate_passed": true,
+  "rcps_exact_ism_gate_passed": true,
+  "double_rc_gate_passed": true,
+  "original_validation_rows_evaluated": 0,
+  "test_rows_evaluated": 0,
+  "test_seal_intact": true,
+  "all_scientific_interpretation_gates_passed": true
+}

@@ -1,0 +1,69 @@
+project_name: phase2f_one_time_test
+protocol_revision: phase2f_one_time_test_v1
+protocol_path: protocols/phase2f_one_time_test_protocol.md
+authorization_date: 2026-08-22
+device: cpu
+cpu_threads: 6
+dataset:
+  path: data/phase2/processed/phase2_matched_dataset.csv
+  sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  split: test
+  expected_rows: 3496
+  expected_per_label: 1748
+  chromosomes: [chr3, chr8, chr14, chr18]
+checkpoints:
+  source_results: results/phase2d_rcps_confirmatory
+  manifest_path: metadata/phase2f_checkpoint_manifest.json
+  model_types: [CNN-Raw, CNN-Aug, CNN-RCPS]
+  folds: [fold_a, fold_b, fold_c]
+  seeds: [42, 123, 2026]
+  expected_count: 27
+  retraining_allowed: false
+prediction:
+  threshold: 0.5
+  batch_size: 256
+  evaluate_both_orientations: true
+  report_checkpoint_runs: true
+  report_model_ensemble: true
+attribution:
+  method: exact_ism
+  difference: logit
+  per_chromosome_per_label: 10
+  selection_salt: phase2f_v1
+  expected_samples: 80
+  prediction_consistent_max_abs_difference: 0.01
+  top_k: 8
+  ism_batch_size: 512
+biological:
+  pwm_resource: metadata/jaspar_MA0035.5_GATA1_2026.json
+  relative_score_threshold: 0.80
+  top_k: 7
+  circular_shift_count: 64
+  circular_shift_seed: 20260822
+  low_recall_threshold: 0.5
+invariance_gates:
+  prediction_max_abs_tolerance: 1.0e-6
+  exact_ism_aligned_max_abs_tolerance: 1.0e-5
+statistics:
+  hierarchical_bootstrap_replicates: 10000
+  hierarchical_bootstrap_seed: 20260822
+hypothesis_decisions:
+  h1a_raw_prediction_ci_lower_gt: 0.01
+  h1b_raw_exact_ism_ci_lower_gt: 0.05
+  h2_aug_minus_raw_prediction_ci_upper_lt: 0.0
+  h3a_aug_exact_ism_ci_lower_gt: 0.05
+  h3b_prediction_max_le: 1.0e-6
+  h3b_exact_ism_matrix_max_le: 1.0e-5
+  h4_diagnostic_ci_lower_gt: 0.0
+execution:
+  output_dir: results/phase2f_one_time_test
+  ledger_path: results/phase2f_one_time_test/unseal_ledger.json
+  completion_path: results/phase2f_one_time_test/phase2f_completion.json
+  allow_force_rerun: false
+  resume_same_frozen_run_only: true
+decision:
+  test_unseal_authorized: true
+  change_protocol_after_unseal: false
+  tune_after_test: false
+  select_models_after_test: false
+  transformer_role: exploratory_only_not_retested

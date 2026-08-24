@@ -1,0 +1,62 @@
+project_name: phase15_hard_multimotif_full
+experiment_stage: full
+device: cpu
+data:
+  regime: hard_synthetic
+  sequence_length: 160
+  causal_motif: TGATTTAT
+  decoy_motifs: [TGACTTAT, TGATCTAT, TAATTTAT]
+  causal_count_probabilities_positive: [0.00, 0.55, 0.30, 0.15]
+  pwm_match_probabilities: [0.97, 0.90, 0.82]
+  pwm_strength_probabilities: [0.40, 0.40, 0.20]
+  causal_mutation_probabilities: [0.45, 0.45, 0.10]
+  decoy_count_probabilities_by_label:
+    positive: [0.50, 0.35, 0.15]
+    negative: [0.05, 0.55, 0.30, 0.10]
+  train_size: 5000
+  validation_size: 1000
+  test_size: 1200
+  data_seed: 915150
+  gc_by_split:
+    train: {positive: 0.50, negative: 0.50}
+    validation: {positive: 0.50, negative: 0.50}
+    test: {positive: 0.50, negative: 0.50}
+  label_noise_by_split: {train: 0.03, validation: 0.00, test: 0.00}
+  shortcut: {enabled: false}
+model:
+  conv_channels: 32
+  kernel_size: 9
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 5
+training:
+  seeds: [42, 123, 2026]
+  model_types: [CNN-Raw, CNN-Aug, CNN-Pair, CNN-PostHoc, CNN-RCPS]
+  batch_size: 128
+  max_epochs: 12
+  patience: 4
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  selection_metric: validation_loss
+interpretation:
+  method: ism
+  difference: logit
+  positive_samples: 100
+  sample_seed: 92718
+  batch_size: 512
+  top_k: 8
+  prediction_consistent_epsilon: 0.01
+  attribution_asymmetric_pearson: 0.90
+  near_motif_control:
+    enabled: true
+    motifs: [TGATTTAT]
+    max_hamming: 2
+    sensitivity_thresholds: [1, 2]
+    exclude_annotated_regions: true
+statistics:
+  bootstrap_replicates: 2000
+  bootstrap_seed: 5150
+  multiple_testing: benjamini_hochberg

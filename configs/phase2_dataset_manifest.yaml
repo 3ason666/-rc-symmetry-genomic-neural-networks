@@ -1,0 +1,151 @@
+schema_version: 1
+audit_date: "2026-08-21"
+freeze_status: frozen_for_phase2_pilot
+formal_training_allowed: true
+reason_training_blocked: []
+
+task:
+  organism: Homo sapiens
+  biosample: K562
+  target: GATA1
+  assay: TF ChIP-seq peak classification
+  assembly: GRCh38
+  sequence_length_bp: 256
+  class_balance: balanced_within_split
+
+files:
+  positive_peaks:
+    experiment_accession: ENCSR000EFT
+    file_accession: ENCFF148JKK
+    output_type: optimal IDR thresholded peaks
+    file_format: bed narrowPeak
+    assembly: GRCh38
+    status: released
+    md5sum: d5183b4c65853c9dea2b299fd17f2562
+    expected_peak_count: 14684
+    audit_disposition: conditional_go
+    url: https://www.encodeproject.org/files/ENCFF148JKK/@@download/ENCFF148JKK.bed.gz
+  positive_peaks_conservative_sensitivity:
+    experiment_accession: ENCSR000EFT
+    file_accession: ENCFF875JHB
+    output_type: conservative IDR thresholded peaks
+    file_format: bed narrowPeak
+    assembly: GRCh38
+    status: released
+    md5sum: 8e03c2d46eded620a080b6b726df9c6e
+    expected_peak_count: 10936
+    audit_disposition: sensitivity_analysis
+    url: https://www.encodeproject.org/files/ENCFF875JHB/@@download/ENCFF875JHB.bed.gz
+  accessible_negative_pool:
+    experiment_accession: ENCSR868FGK
+    file_accession: ENCFF333TAT
+    output_type: pseudoreplicated peaks
+    file_format: bed narrowPeak
+    assembly: GRCh38
+    status: released
+    md5sum: 0f7a6c13e23c2e3fc8716153a89ed481
+    audit_disposition: conditional_go
+    url: https://www.encodeproject.org/files/ENCFF333TAT/@@download/ENCFF333TAT.bed.gz
+  reference_fasta:
+    dataset_accession: ENCSR425FOI
+    file_accession: GRCh38_no_alt_analysis_set_GCA_000001405.15
+    file_format: fasta
+    assembly: GRCh38
+    status: released
+    md5sum: a08035b6a6e31780e96a34008ff21bd6
+    url: https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/@@download/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
+  blacklist:
+    dataset_accession: ENCSR636HFF
+    file_accession: ENCFF356LFX
+    output_type: exclusion list regions
+    file_format: bed bed3
+    assembly: GRCh38
+    status: released
+    md5sum: 393688b4f06c9ce26165d47433dd8c37
+    url: https://www.encodeproject.org/files/ENCFF356LFX/@@download/ENCFF356LFX.bed.gz
+  ctcf_positive_control:
+    experiment_accession: ENCSR000AKO
+    file_accession: ENCFF769AUF
+    output_type: conservative IDR thresholded peaks
+    file_format: bed narrowPeak
+    assembly: GRCh38
+    status: released
+    md5sum: 7d086cac19c5311a77b7e21e3d931435
+    audit_disposition: secondary_only
+    url: https://www.encodeproject.org/files/ENCFF769AUF/@@download/ENCFF769AUF.bed.gz
+
+positive_definition:
+  center: narrowPeak_summit
+  window_bp: 256
+  primary_task_requires_K562_ATAC_overlap: true
+  atac_signal_assignment: maximum_signal_of_overlapping_ENCFF333TAT_peaks
+  remove_if:
+    - invalid_narrowPeak_summit
+    - contains_N
+    - overlaps_blacklist
+    - outside_primary_chromosomes
+    - window_out_of_bounds
+    - overlaps_another_retained_positive
+
+negative_definition:
+  source: K562_ATAC_accessible_regions
+  exclude:
+    - overlaps_GATA1_peak
+    - within_128bp_of_GATA1_peak_boundary
+    - overlaps_blacklist
+    - contains_N
+    - window_out_of_bounds
+  match_on:
+    - chromosome
+    - GC_fraction_bin_0.02
+    - accessibility_signal_quantile
+    - window_length
+  ratio_to_positive: 1.0
+  random_genomic_negative_role: sensitivity_analysis_only
+
+leakage_controls:
+  split_unit: chromosome
+  canonical_key: min(sequence, reverse_complement(sequence))
+  reject_cross_split_exact_or_rc_duplicates: true
+  reject_cross_split_interval_overlap: true
+  reject_same_peak_across_splits: true
+  audit_low_complexity_and_near_duplicates: true
+
+download_gate:
+  require_all_status_released: true
+  require_md5_match: true
+  require_assembly_match: GRCh38
+  require_nonempty_files: true
+  require_expected_peak_count_check: true
+  require_audit_snapshot: true
+
+current_qc_state:
+  bed_files_downloaded_and_md5_verified: true
+  gata1_optimal_invalid_summits_excluded: 3
+  gata1_conservative_invalid_summits_excluded: 3
+  coordinate_filtered_optimal_windows: 14313
+  coordinate_filtered_optimal_windows_with_ATAC_overlap: 11773
+  coordinate_filtered_negative_pool: 244248
+  encode_reference_download_complete: false
+  sequence_candidate_source: Ensembl_REST_GRCh38.p14_GCA_000001405.29_reference_equivalence_validated
+  reference_equivalence_audit_passed: true
+  reference_equivalence_basis:
+    - "chr1-chr22 use identical GenBank and RefSeq accession versions and lengths in GCA_000001405.15 and GCA_000001405.29."
+    - "One deterministic 256 bp window per autosome matched the corresponding NCBI RefSeq sequence (22/22)."
+  primary_matched_pairs: 11655
+  final_dataset_sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  matching_balance_passed: true
+  leakage_audit_passed: true
+  train_chromosomes: [chr1, chr4, chr5, chr6, chr7, chr9, chr10, chr12, chr13, chr15, chr16, chr17, chr19, chr20, chr21]
+  validation_chromosomes: [chr2, chr11, chr22]
+  test_chromosomes: [chr3, chr8, chr14, chr18]
+
+change_log:
+  - date: "2026-08-22"
+    change: "Require ATAC overlap for primary positive samples so accessibility-signal matching is defined for both classes."
+    timing: "Before matching, chromosome splitting, model training, or inspection of model outputs."
+    rationale: "The frozen negative design matches on ATAC signal; positives without an overlapping ATAC peak have no comparable peak signal."
+  - date: "2026-08-22"
+    change: "Accept Ensembl REST windows after reference-equivalence audit instead of waiting for the complete ENCODE gzip transfer."
+    timing: "Before model training or inspection of model outputs."
+    rationale: "The two assemblies use identical chr1-chr22 component accession versions and lengths, and 22/22 coordinate-level RefSeq spot checks matched."

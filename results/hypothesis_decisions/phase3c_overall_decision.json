@@ -1,0 +1,16 @@
+{
+  "primary_task": "p3_gata1_fetal",
+  "primary_full_replication": false,
+  "primary_hypothesis_status": {
+    "H1a": "reproduced",
+    "H1b": "not_estimable",
+    "H2": "reproduced",
+    "H3a": "reproduced",
+    "H3b": "reproduced"
+  },
+  "supportive_task": "p3_ctcf_gm12878",
+  "supportive_interpretability_gates_passed": true,
+  "ctcf_non_support_interpretation": "possible_functional_boundary",
+  "h4_excluded_from_composite_success": true,
+  "transformer_excluded_from_confirmatory_success": true
+}

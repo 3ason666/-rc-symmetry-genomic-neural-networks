@@ -1,0 +1,10 @@
+{
+  "status": "completed_locked",
+  "completed_at_utc": "2026-08-23T06:43:41.879320+00:00",
+  "protocol_revision": "phase3e_near_duplicate_sensitivity_v1",
+  "training_runs": 54,
+  "evaluation_execution_count": 1,
+  "sensitivity_only": true,
+  "primary_p3_results_replaced": false,
+  "decision_sha256": "33ecfbf2465867a957afaecbb43b1bd9ec9a06ba14b92efb9332b7e43cbce05c"
+}

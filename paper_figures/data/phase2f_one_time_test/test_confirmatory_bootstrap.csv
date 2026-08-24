@@ -1,0 +1,9 @@
+family,hypothesis,analysis,endpoint,contrast,estimate,ci95_low,ci95_high,p_two_sided,n,q_bh
+confirmatory,H1a,CNN-Raw test prediction asymmetry,prediction_difference,vs_zero_or_frozen_threshold,0.10055323767663753,0.09089976650895025,0.11290297318274561,0.00019998000199980003,31464,0.00026664000266640004
+confirmatory,H1b,CNN-Raw Exact ISM asymmetry among prediction-consistent samples,absolute_normalized_l1,vs_zero_or_frozen_threshold,0.3117125228266131,0.28686431918675004,0.33484745599371374,0.00019998000199980003,63,0.00026664000266640004
+confirmatory,H3a,CNN-Aug residual Exact ISM asymmetry,absolute_normalized_l1,vs_zero_or_frozen_threshold,0.3012410167058176,0.27905347941923203,0.3172801237193745,0.00019998000199980003,720,0.00026664000266640004
+confirmatory,H2,paired test prediction asymmetry,prediction_difference,CNN-Aug_minus_CNN-Raw,-0.015145361629886913,-0.025689389624005195,-0.0029408728742250883,0.016798320167983202,31464,0.019198080191980802
+confirmatory,H3a,paired test Exact ISM asymmetry,absolute_normalized_l1,CNN-Aug_minus_CNN-Raw,-0.025796706876808913,-0.043707652507804715,-0.003456301374348653,0.022997700229977002,720,0.022997700229977002
+confirmatory,H3b,paired test prediction asymmetry,prediction_difference,CNN-RCPS_minus_CNN-Aug,-0.0854078760467506,-0.09143534524389654,-0.07731375467860549,0.00019998000199980003,31464,0.00026664000266640004
+confirmatory,H3b,paired test Exact ISM asymmetry,absolute_normalized_l1,CNN-RCPS_minus_CNN-Aug,-0.3012410129768796,-0.3174831190393809,-0.278950100705512,0.00019998000199980003,720,0.00026664000266640004
+confirmatory,H4,RCPS biological diagnostic failure rate,diagnostic_failure,vs_zero,0.4871794871794871,0.43019943019943024,0.5413105413105413,0.00019998000199980003,351,0.00026664000266640004

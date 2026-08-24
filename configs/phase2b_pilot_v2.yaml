@@ -1,0 +1,43 @@
+project_name: phase2b_rc_models_pilot_v2
+implementation_revision: rcps_shared_half_convolution_v2
+audit_predecessor: results/phase2b_rc_models_pilot
+device: cpu
+cpu_threads: 6
+dataset:
+  path: data/phase2/processed/phase2_matched_dataset.csv
+  sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  sequence_length: 256
+  allowed_training_splits: [train, validation]
+  test_policy: sealed_no_model_access
+phase2a_sources:
+  results_dir: results/phase2a_cnn_pilot
+  conjoined_backbone_checkpoint: results/phase2a_cnn_pilot/runs/cnn_aug_seed_42/best_checkpoint.pt
+  shared_ism_sample_ids: results/phase2a_cnn_pilot/ism_validation_sample_ids.csv
+model:
+  conv_channels: 32
+  kernel_size: 15
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 7
+training:
+  seeds: [42]
+  model_types: [CNN-PostHoc, CNN-RCPS]
+  batch_size: 128
+  max_epochs: 12
+  patience: 3
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  selection_metric: validation_loss
+interpretation:
+  method: exact_ism
+  difference: logit
+  batch_size: 512
+  top_k: 8
+invariance_gates:
+  prediction_max_abs_tolerance: 1.0e-6
+  exact_ism_aligned_max_abs_tolerance: 1.0e-5
+  feature_equivariance_max_abs_tolerance: 1.0e-6
+  checkpoint_reload_max_abs_tolerance: 1.0e-6

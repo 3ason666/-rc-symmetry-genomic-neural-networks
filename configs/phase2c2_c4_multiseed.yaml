@@ -1,0 +1,91 @@
+project_name: phase2c2_c4_multiseed_validation
+protocol_revision: phase2c2_c4_user_confirmed_amendment_v1
+protocol_confirmed_date: 2026-08-22
+audit_predecessors:
+  phase2c_v2: results/phase2c_transformer_pilot_v2
+  phase2c1_calibration: results/phase2c1_cpu_calibration
+amendment:
+  mechanically_selected_calibration_candidate: c5_wide
+  frozen_confirmation_candidate: c4_deeper
+  rationale: >-
+    The former ranking was dominated by the positionless negative control.
+    Before accessing the frozen validation confirmation, the user confirmed c4
+    because it had the strongest Absolute and Relative calibration performance.
+  none_role: non_gating_structural_negative_control
+device: cpu
+cpu_threads: 6
+dataset:
+  path: data/phase2/processed/phase2_matched_dataset.csv
+  sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  sequence_length: 256
+  allowed_training_splits: [train, validation]
+  test_policy: sealed_no_model_access
+phase2_sources:
+  shared_ism_sample_ids: results/phase2a_cnn_pilot/ism_validation_sample_ids.csv
+cnn_model:
+  conv_channels: 32
+  kernel_size: 15
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 7
+transformer_model:
+  sequence_length: 256
+  patch_size: 4
+  d_model: 32
+  n_heads: 4
+  num_layers: 3
+  feedforward_dim: 64
+  dropout: 0.1
+training:
+  seeds: [42, 123, 2026]
+  model_types:
+    - CNN-Aug
+    - Transformer-Raw
+    - Transformer-Aug-None
+    - Transformer-Aug-Absolute
+    - Transformer-Aug-Relative
+  batch_size: 128
+  max_epochs: 30
+  patience: 5
+  cnn_learning_rate: 0.001
+  transformer_learning_rate: 0.0005
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  selection_metric: validation_loss
+interpretation:
+  primary_method: exact_ism
+  methods: [exact_ism, integrated_gradients, deeplift, gradient_shap]
+  difference: logit
+  ism_batch_size: 512
+  gradient_batch_size: 8
+  integrated_gradients_steps: 32
+  gradient_shap_samples: 16
+  baseline: rc_compatible_zero
+  gradient_shap_baseline_distribution: [zero, uniform_0.25]
+  random_seed: 20260822
+  top_k: 8
+  prediction_consistent_max_abs_difference: 0.01
+  attribution_pearson_warning_below: 0.90
+  attribution_top8_warning_below: 0.75
+h3c:
+  primary_comparison: Transformer-Aug-Absolute_minus_CNN-Aug
+  primary_endpoint: exact_ism_absolute_normalized_l1
+  worse_direction: positive
+  hierarchical_bootstrap_replicates: 10000
+  hierarchical_bootstrap_seed: 20260822
+  performance_match_max_abs_auroc_difference: 0.03
+  require_performance_match_for_every_seed: true
+  relative_minimum_validation_auroc_every_seed: 0.80
+  none_is_non_gating: true
+decision:
+  proceed_to_phase2d_only_if:
+    - all_checkpoints_reload
+    - test_seal_intact
+    - all_attribution_methods_complete
+    - absolute_matches_cnn_for_every_seed
+    - relative_passes_floor_for_every_seed
+  frozen_validation_confirmation_count: one
+  unseal_test_now: false
+  start_phase2_full_now: false

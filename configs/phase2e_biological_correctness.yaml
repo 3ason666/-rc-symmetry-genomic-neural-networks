@@ -1,0 +1,79 @@
+project_name: phase2e_biological_correctness
+protocol_revision: phase2e_biological_correctness_v1
+protocol_path: protocols/phase2e_biological_correctness_protocol.md
+protocol_frozen_date: 2026-08-22
+device: cpu
+cpu_threads: 6
+
+inputs:
+  phase2d_dir: results/phase2d_rcps_confirmatory
+  phase2d_resolved_config_sha256: 4ab6bb001ead3c782246fe2ec787fe70bad9724a8e5167e7824574011848ef63
+  phase2d_gate_sha256: 67f5aaf147e4cd21a4b16546fcf2afcb8e9bb84377c1fd1c6612b5c08a444958
+  frozen_samples_path: results/phase2d_rcps_confirmatory/frozen_attribution_samples.csv
+  frozen_samples_sha256: a2a0c161467f1c08a74115656f426cc7b18a8682f718161d0378935a30d255e9
+  attribution_results_path: results/phase2d_rcps_confirmatory/attribution_results.csv
+  attribution_results_sha256: cd4e110c0c99a47dcaafbbb5d5a93068a4b621601e21afbbebd33bfdd50ad6f9
+  conservative_dataset_path: data/phase2/processed/phase2_conservative_sensitivity_dataset.csv
+  conservative_dataset_sha256: 40db573eb1e9417645437a9a8edeba215df949e2a6f910c0ac2de247ee9304a8
+  allowed_source_split: train
+  forbidden_splits: [validation, test]
+  test_policy: sealed_no_model_access
+
+models:
+  model_types: [CNN-Raw, CNN-Aug, CNN-RCPS]
+  seeds: [42, 123, 2026]
+  folds: [fold_a, fold_b, fold_c]
+  expected_checkpoints: 27
+  expected_exact_ism_files: 27
+  retraining_allowed: false
+  tuning_allowed: false
+
+motif:
+  resource_path: metadata/jaspar_MA0035.5_GATA1_2026.json
+  resource_sha256: a180d7d4c7cbb159f1c9d25eb2a6b11774ca07467bb9bbee2e55a3e47413e9ee
+  matrix_id: MA0035.5
+  release: 2026
+  pseudocount: 0.5
+  background: {A: 0.25, C: 0.25, G: 0.25, T: 0.25}
+  primary_relative_score_threshold: 0.80
+  sensitivity_thresholds: [0.85, 0.90]
+  scan_both_strands: true
+  tie_break: lower_start_then_forward
+
+localization:
+  primary_method: exact_ism
+  primary_view: forward_absolute
+  positive_only_primary: true
+  top_k: 7
+  circular_shift_count: 64
+  circular_shift_seed: 20260822
+  low_recall_threshold: 0.5
+  summit_index_zero_based: 128
+  summit_window_start: 120
+  summit_window_end: 136
+
+disruption:
+  primary_endpoint: motif_minus_matched_flank_logit_drop
+  motif_edit: minimum_pwm_base_or_second_minimum_if_unchanged
+  flank_edit: equal_mutation_count_deterministic_cyclic_substitution
+  flank_selection: mirrored_center_distance_then_nearest_nonoverlap
+  prediction_batch_size: 256
+
+conservative_sensitivity:
+  expected_source_rows: 12552
+  use_all_train_rows: true
+  route_by_phase2d_holdout_chromosome: true
+  threshold: 0.5
+  prediction_batch_size: 512
+
+statistics:
+  hierarchical_bootstrap_replicates: 10000
+  hierarchical_bootstrap_seed: 20260822
+  confidence_interval: 0.95
+  multiple_testing: Benjamini-Hochberg
+
+decision:
+  access_original_validation: false
+  unseal_test_now: false
+  allow_post_result_changes: false
+  phase2f_authorized: false

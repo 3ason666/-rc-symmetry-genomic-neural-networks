@@ -1,0 +1,84 @@
+project_name: phase2c1_cpu_calibration
+protocol_revision: phase2c1_train_only_chromosome_calibration_v1
+device: cpu
+cpu_threads: 6
+dataset:
+  path: data/phase2/processed/phase2_matched_dataset.csv
+  sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  sequence_length: 256
+  allowed_training_splits: [train, validation]
+  source_split: train
+  forbidden_splits: [validation, test]
+  test_policy: sealed_no_model_access
+calibration_split:
+  method: chromosome_holdout
+  selection_seed: 20260822
+  holdout_chromosomes: [chr13, chr17, chr4, chr12]
+  expected_inner_train_rows: 12924
+  expected_inner_validation_rows: 3394
+model:
+  sequence_length: 256
+  patch_size: 4
+training:
+  calibration_seed: 314159
+  model_types:
+    - Transformer-Aug-None
+    - Transformer-Aug-Absolute
+    - Transformer-Aug-Relative
+  batch_size: 128
+  max_epochs: 30
+  patience: 5
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  weight_decay: 0.0001
+  selection_metric: inner_validation_loss
+candidates:
+  - candidate_id: c1_long_baseline
+    d_model: 18
+    n_heads: 3
+    num_layers: 2
+    feedforward_dim: 36
+    dropout: 0.1
+    learning_rate: 0.001
+  - candidate_id: c2_medium
+    d_model: 32
+    n_heads: 4
+    num_layers: 2
+    feedforward_dim: 64
+    dropout: 0.1
+    learning_rate: 0.001
+  - candidate_id: c3_medium_low_lr
+    d_model: 32
+    n_heads: 4
+    num_layers: 2
+    feedforward_dim: 64
+    dropout: 0.1
+    learning_rate: 0.0005
+  - candidate_id: c4_deeper
+    d_model: 32
+    n_heads: 4
+    num_layers: 3
+    feedforward_dim: 64
+    dropout: 0.1
+    learning_rate: 0.0005
+  - candidate_id: c5_wide
+    d_model: 48
+    n_heads: 4
+    num_layers: 2
+    feedforward_dim: 96
+    dropout: 0.1
+    learning_rate: 0.0005
+selection:
+  minimum_inner_validation_auroc: 0.80
+  ordered_rules:
+    - maximize_number_of_variants_at_or_above_floor
+    - maximize_minimum_variant_auroc
+    - maximize_mean_variant_auroc
+    - minimize_mean_variant_loss
+  final_confirmation_seeds: [42, 123, 2026]
+  final_validation_performance_match_max_abs_auroc_difference: 0.03
+decision:
+  access_frozen_validation_during_calibration: false
+  unseal_test_now: false
+  start_phase2_full_now: false

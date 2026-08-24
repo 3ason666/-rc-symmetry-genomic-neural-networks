@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-22T20:04:08.008490+00:00",
+  "status": "passed",
+  "formal_training_allowed": true,
+  "test_unsealing_allowed": false,
+  "deferred_non_data_gate": {
+    "H1b_prediction_consistent_test_subgroup_minimum_100": "assess_only_after_frozen_models_and_one_time_test_unseal"
+  },
+  "inputs": {
+    "construction_qc_sha256": "152a3fde6dd531fc49efa1f7c17a3b7763a371a396860564b9a595728adcde55",
+    "near_duplicate_audit_sha256": "ccc5bbce98f3eb9dd1701ee6694f56f95e188813514f4e6f501c58c0fb8bf15a",
+    "config_sha256": "8c238452db8648f446ee6a139ef62201d8a084d489d1d9d59be230a951413cd6",
+    "protocol_sha256": "70a21a50bf1722f8e7c44d508e93389ce9b8fe93d538c2cbfab5f5346363cdf3"
+  },
+  "tasks": {
+    "p3_gata1_fetal": {
+      "status": "passed",
+      "final_pairs": 2032,
+      "final_matched_rate": 0.9223785746709033,
+      "removed_near_duplicate_pairs": 0,
+      "partition_qc": {
+        "fixed_partition": {
+          "development": {
+            "positive": 1727,
+            "negative": 1727,
+            "gc_ks_d": 0.009843659525188175,
+            "accessibility_log2p1_ks_d": 0.04226983207874935,
+            "passed": true
+          },
+          "test": {
+            "positive": 305,
+            "negative": 305,
+            "gc_ks_d": 0.01967213114754099,
+            "accessibility_log2p1_ks_d": 0.042622950819672156,
+            "passed": true
+          }
+        },
+        "fold1_partition": {
+          "test": {
+            "positive": 305,
+            "negative": 305,
+            "gc_ks_d": 0.01967213114754099,
+            "accessibility_log2p1_ks_d": 0.042622950819672156,
+            "passed": true
+          },
+          "train": {
+            "positive": 1422,
+            "negative": 1422,
+            "gc_ks_d": 0.012658227848101222,
+            "accessibility_log2p1_ks_d": 0.04641350210970463,
+            "passed": true
+          },
+          "validation": {
+            "positive": 305,
+            "negative": 305,
+            "gc_ks_d": 0.022950819672131084,
+            "accessibility_log2p1_ks_d": 0.042622950819672045,
+            "passed": true
+          }
+        },
+        "fold2_partition": {
+          "test": {
+            "positive": 305,
+            "negative": 305,
+            "gc_ks_d": 0.01967213114754099,
+            "accessibility_log2p1_ks_d": 0.042622950819672156,
+            "passed": true
+          },
+          "train": {
+            "positive": 1422,
+            "negative": 1422,
+            "gc_ks_d": 0.010548523206751037,
+            "accessibility_log2p1_ks_d": 0.03867791842475388,
+            "passed": true
+          },
+          "validation": {
+            "positive": 305,
+            "negative": 305,
+            "gc_ks_d": 0.02622950819672132,
+            "accessibility_log2p1_ks_d": 0.06229508196721312,
+            "passed": true
+          }
+        },
+        "fold3_partition": {
+          "test": {
+            "positive": 305,
+            "negative": 305,
+            "gc_ks_d": 0.01967213114754099,
+            "accessibility_log2p1_ks_d": 0.042622950819672156,
+            "passed": true
+          },
+          "train": {
+            "positive": 1422,
+            "negative": 1422,
+            "gc_ks_d": 0.00914205344585095,
+            "accessibility_log2p1_ks_d": 0.03867791842475388,
+            "passed": true
+          },
+          "validation": {
+            "positive": 305,
+            "negative": 305,
+            "gc_ks_d": 0.01967213114754099,
+            "accessibility_log2p1_ks_d": 0.059016393442622994,
+            "passed": true
+          }
+        }
+      },
+      "fixed_test_positive_counts_by_chromosome": {
+        "chr11": 125,
+        "chr12": 110,
+        "chr14": 70
+      },
+      "fixed_test_maximum_single_chromosome_fraction": 0.4098360655737705,
+      "low_complexity": {
+        "definition": {
+          "shannon_entropy_below": 1.2,
+          "maximum_homopolymer_at_least": 12
+        },
+        "action": "report_only_no_silent_deletion",
+        "count": 136,
+        "fraction": 0.03346456692913386,
+        "by_label": {
+          "positive": {
+            "count": 46,
+            "total": 2032
+          },
+          "negative": {
+            "count": 90,
+            "total": 2032
+          }
+        },
+        "examples": [
+          {
+            "sample_id": "ENCFF253NOJ:17522",
+            "label": 0,
+            "entropy": 1.9471684876304352,
+            "maximum_homopolymer": 12
+          },
+          {
+            "sample_id": "ENCFF253NOJ:14924",
+            "label": 0,
+            "entropy": 1.9258214881075562,
+            "maximum_homopolymer": 14
+          },
+          {
+            "sample_id": "ENCFF253NOJ:16892",
+            "label": 0,
+            "entropy": 1.9665526855063427,
+            "maximum_homopolymer": 15
+          },
+          {
+            "sample_id": "ENCFF253NOJ:14891",
+            "label": 0,
+            "entropy": 1.966645571976462,
+            "maximum_homopolymer": 15
+          },
+          {
+            "sample_id": "ENCFF404PZM:1041",
+            "label": 0,
+            "entropy": 1.9055625115659707,
+            "maximum_homopolymer": 27
+          },
+          {
+            "sample_id": "ENCFF404PZM:4215",
+            "label": 0,
+            "entropy": 1.9614570122408361,
+            "maximum_homopolymer": 28
+          },
+          {
+            "sample_id": "ENCFF802VPT:2262",
+            "label": 1,
+            "entropy": 1.9891930180370074,
+            "maximum_homopolymer": 25
+          },
+          {
+            "sample_id": "ENCFF404PZM:9720",
+            "label": 0,
+            "entropy": 1.9576970122900292,
+            "maximum_homopolymer": 22
+          },
+          {
+            "sample_id": "ENCFF404PZM:7245",
+            "label": 0,
+            "entropy": 1.9422812980993687,
+            "maximum_homopolymer": 16
+          },
+          {
+            "sample_id": "ENCFF404PZM:8215",
+            "label": 0,
+            "entropy": 1.9587744966608103,
+            "maximum_homopolymer": 13
+          },
+          {
+            "sample_id": "ENCFF802VPT:1657",
+            "label": 1,
+            "entropy": 1.9804505466702726,
+            "maximum_homopolymer": 14
+          },
+          {
+            "sample_id": "ENCFF802VPT:1775",
+            "label": 1,
+            "entropy": 1.9302855267554246,
+            "maximum_homopolymer": 26
+          },
+          {
+            "sample_id": "ENCFF802VPT:1583",
+            "label": 1,
+            "entropy": 1.9734913669849867,
+            "maximum_homopolymer": 12
+          },
+          {
+            "sample_id": "ENCFF802VPT:66",
+            "label": 1,
+            "entropy": 1.969930216782566,
+            "maximum_homopolymer": 13
+          },
+          {
+            "sample_id": "ENCFF404PZM:78792",
+            "label": 0,
+            "entropy": 1.9057703565207644,
+            "maximum_homopolymer": 13
+          },
+          {
+            "sample_id": "ENCFF253NOJ:89931",
+            "label": 0,
+            "entropy": 1.9657633802690928,
+            "maximum_homopolymer": 43
+          },
+          {
+            "sample_id": "ENCFF404PZM:88981",
+            "label": 0,
+            "entropy": 1.9765369443590237,
+            "maximum_homopolymer": 16
+          },
+          {
+            "sample_id": "ENCFF253NOJ:92258",
+            "label": 0,
+            "entropy": 1.9743937285937037,
+            "maximum_homopolymer": 12
+          },
+          {
+            "sample_id": "ENCFF404PZM:82636",
+            "label": 0,
+            "entropy": 1.9384040977247956,
+            "maximum_homopolymer": 16
+          },
+          {
+            "sample_id": "ENCFF253NOJ:96915",
+            "label": 0,
+            "entropy": 1.9197083698241726,
+            "maximum_homopolymer": 14
+          }
+        ]
+      },
+      "gates": {
+        "pair_integrity": true,
+        "sample_ids_unique": true,
+        "exact_and_rc_canonical_keys_unique": true,
+        "every_partition_gc_and_accessibility_ks_d_le_0_10": true,
+        "final_matched_rate_ge_0_90": true,
+        "fixed_test_at_least_three_chromosomes": true,
+        "fixed_test_maximum_single_chromosome_fraction_le_0_50": true,
+        "fixed_test_minimum_200_per_class": true,
+        "all_folds_minimum_train_1000_validation_200_per_class": true,
+        "near_duplicate_primary_audit_passed": true
+      },
+      "full_locked_dataset_sha256": "c1826ba271487715518c3170a60f3be5c90b628a10c984c2b7e7ba8a8675aae3",
+      "pair_table_sha256": "1408c8dc522f306015e945d3a146e5a5ba08d7a831551d5aa4895471b58401a7"
+    },
+    "p3_ctcf_gm12878": {
+      "status": "passed",
+      "final_pairs": 32779,
+      "final_matched_rate": 0.9691047776726585,
+      "removed_near_duplicate_pairs": 78,
+      "partition_qc": {
+        "fixed_partition": {
+          "development": {
+            "positive": 27856,
+            "negative": 27856,
+            "gc_ks_d": 0.0020103388856979043,
+            "accessibility_log2p1_ks_d": 0.0152211372774268,
+            "passed": true
+          },
+          "test": {
+            "positive": 4923,
+            "negative": 4923,
+            "gc_ks_d": 0.005078204346942838,
+            "accessibility_log2p1_ks_d": 0.019703432866138515,
+            "passed": true
+          }
+        },
+        "fold1_partition": {
+          "test": {
+            "positive": 4923,
+            "negative": 4923,
+            "gc_ks_d": 0.005078204346942838,
+            "accessibility_log2p1_ks_d": 0.019703432866138515,
+            "passed": true
+          },
+          "train": {
+            "positive": 22940,
+            "negative": 22940,
+            "gc_ks_d": 0.002266782911944154,
+            "accessibility_log2p1_ks_d": 0.016477768090671363,
+            "passed": true
+          },
+          "validation": {
+            "positive": 4916,
+            "negative": 4916,
+            "gc_ks_d": 0.00732302685109848,
+            "accessibility_log2p1_ks_d": 0.012611879576891805,
+            "passed": true
+          }
+        },
+        "fold2_partition": {
+          "test": {
+            "positive": 4923,
+            "negative": 4923,
+            "gc_ks_d": 0.005078204346942838,
+            "accessibility_log2p1_ks_d": 0.019703432866138515,
+            "passed": true
+          },
+          "train": {
+            "positive": 22937,
+            "negative": 22937,
+            "gc_ks_d": 0.002267079391376381,
+            "accessibility_log2p1_ks_d": 0.014300039237912565,
+            "passed": true
+          },
+          "validation": {
+            "positive": 4919,
+            "negative": 4919,
+            "gc_ks_d": 0.005895507216914009,
+            "accessibility_log2p1_ks_d": 0.02175238869688967,
+            "passed": true
+          }
+        },
+        "fold3_partition": {
+          "test": {
+            "positive": 4923,
+            "negative": 4923,
+            "gc_ks_d": 0.005078204346942838,
+            "accessibility_log2p1_ks_d": 0.019703432866138515,
+            "passed": true
+          },
+          "train": {
+            "positive": 22941,
+            "negative": 22941,
+            "gc_ks_d": 0.0029641253650669053,
+            "accessibility_log2p1_ks_d": 0.015300117693213044,
+            "passed": true
+          },
+          "validation": {
+            "positive": 4915,
+            "negative": 4915,
+            "gc_ks_d": 0.007527975584944058,
+            "accessibility_log2p1_ks_d": 0.017497456765005137,
+            "passed": true
+          }
+        }
+      },
+      "fixed_test_positive_counts_by_chromosome": {
+        "chr11": 1848,
+        "chr16": 1176,
+        "chr19": 1272,
+        "chr22": 627
+      },
+      "fixed_test_maximum_single_chromosome_fraction": 0.3753808653260207,
+      "low_complexity": {
+        "definition": {
+          "shannon_entropy_below": 1.2,
+          "maximum_homopolymer_at_least": 12
+        },
+        "action": "report_only_no_silent_deletion",
+        "count": 1950,
+        "fraction": 0.0297446535891882,
+        "by_label": {
+          "positive": {
+            "count": 987,
+            "total": 32779
+          },
+          "negative": {
+            "count": 963,
+            "total": 32779
+          }
+        },
+        "examples": [
+          {
+            "sample_id": "ENCFF138REW:34270",
+            "label": 1,
+            "entropy": 1.9216005076575384,
+            "maximum_homopolymer": 13
+          },
+          {
+            "sample_id": "ENCFF138REW:12021",
+            "label": 1,
+            "entropy": 1.7490164174116332,
+            "maximum_homopolymer": 14
+          },
+          {
+            "sample_id": "ENCFF687HBT:6636",
+            "label": 0,
+            "entropy": 1.947196600524856,
+            "maximum_homopolymer": 15
+          },
+          {
+            "sample_id": "ENCFF138REW:6115",
+            "label": 1,
+            "entropy": 1.9615633492582774,
+            "maximum_homopolymer": 12
+          },
+          {
+            "sample_id": "ENCFF687HBT:24720",
+            "label": 0,
+            "entropy": 1.9935702014167012,
+            "maximum_homopolymer": 15
+          },
+          {
+            "sample_id": "ENCFF687HBT:7929",
+            "label": 0,
+            "entropy": 1.9720579997051706,
+            "maximum_homopolymer": 22
+          },
+          {
+            "sample_id": "ENCFF138REW:40042",
+            "label": 1,
+            "entropy": 1.98039722660143,
+            "maximum_homopolymer": 14
+          },
+          {
+            "sample_id": "ENCFF138REW:37356",
+            "label": 1,
+            "entropy": 1.9690016792340141,
+            "maximum_homopolymer": 37
+          },
+          {
+            "sample_id": "ENCFF138REW:12651",
+            "label": 1,
+            "entropy": 1.9821153178547917,
+            "maximum_homopolymer": 15
+          },
+          {
+            "sample_id": "ENCFF687HBT:6434",
+            "label": 0,
+            "entropy": 1.957219105104528,
+            "maximum_homopolymer": 17
+          },
+          {
+            "sample_id": "ENCFF687HBT:21488",
+            "label": 0,
+            "entropy": 1.9639324678225913,
+            "maximum_homopolymer": 21
+          },
+          {
+            "sample_id": "ENCFF138REW:40282",
+            "label": 1,
+            "entropy": 1.9582299108376382,
+            "maximum_homopolymer": 15
+          },
+          {
+            "sample_id": "ENCFF687HBT:13508",
+            "label": 0,
+            "entropy": 1.9621623914425927,
+            "maximum_homopolymer": 14
+          },
+          {
+            "sample_id": "ENCFF687HBT:729",
+            "label": 0,
+            "entropy": 1.869896846126178,
+            "maximum_homopolymer": 15
+          },
+          {
+            "sample_id": "ENCFF687HBT:16153",
+            "label": 0,
+            "entropy": 1.979472902850202,
+            "maximum_homopolymer": 18
+          },
+          {
+            "sample_id": "ENCFF687HBT:13467",
+            "label": 0,
+            "entropy": 1.9899716811579307,
+            "maximum_homopolymer": 12
+          },
+          {
+            "sample_id": "ENCFF138REW:36690",
+            "label": 1,
+            "entropy": 1.9938172294456484,
+            "maximum_homopolymer": 13
+          },
+          {
+            "sample_id": "ENCFF687HBT:11269",
+            "label": 0,
+            "entropy": 1.9938813597014946,
+            "maximum_homopolymer": 12
+          },
+          {
+            "sample_id": "ENCFF138REW:25132",
+            "label": 1,
+            "entropy": 1.9629153955773666,
+            "maximum_homopolymer": 16
+          },
+          {
+            "sample_id": "ENCFF138REW:13707",
+            "label": 1,
+            "entropy": 1.9649849716830157,
+            "maximum_homopolymer": 12
+          }
+        ]
+      },
+      "gates": {
+        "pair_integrity": true,
+        "sample_ids_unique": true,
+        "exact_and_rc_canonical_keys_unique": true,
+        "every_partition_gc_and_accessibility_ks_d_le_0_10": true,
+        "final_matched_rate_ge_0_90": true,
+        "fixed_test_at_least_three_chromosomes": true,
+        "fixed_test_maximum_single_chromosome_fraction_le_0_50": true,
+        "fixed_test_minimum_200_per_class": true,
+        "all_folds_minimum_train_1000_validation_200_per_class": true,
+        "near_duplicate_primary_audit_passed": true
+      },
+      "full_locked_dataset_sha256": "67467e14bd6e25485e6d07f17c61843a9b6080064734a4cbefad24a19aac37ab",
+      "pair_table_sha256": "1f3715ee4d355dc48aaa1de88c9427603ec592a5ab308c568cc2112afb08662e"
+    }
+  }
+}

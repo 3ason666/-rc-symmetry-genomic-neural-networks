@@ -1,0 +1,13 @@
+task_id,hypothesis,primary_status,sensitivity_status,status_stable,primary_n,primary_estimate,primary_ci95_low,primary_ci95_high,sensitivity_n,sensitivity_estimate,sensitivity_ci95_low,sensitivity_ci95_high,primary_evidence,sensitivity_evidence
+p3_gata1_fetal,H1a,reproduced,reproduced,True,5490,0.1040071852630315,0.0935668556105013,0.1149635684676425,5490,0.1073461738097835,0.0988923332169872,0.1149910075957369,CI lower=0.0935669,CI lower=0.0988923
+p3_gata1_fetal,H1b,not_estimable,not_estimable,True,0,,,,0,,,,eligible pool=76,eligible pool=71
+p3_gata1_fetal,H2,reproduced,reproduced,True,5490,-0.0252770665297216,-0.0360365920038537,-0.0166802450986729,5490,-0.0239591614816521,-0.0331336092668286,-0.0156088245737083,contrast CI upper=-0.0166802,contrast CI upper=-0.0156088
+p3_gata1_fetal,H3a,reproduced,reproduced,True,540,0.3222721600579709,0.3061425680790195,0.341082038802846,540,0.331867147556095,0.3169304141704565,0.3458304238999625,CI lower=0.306143,CI lower=0.31693
+p3_gata1_fetal,H3b,reproduced,reproduced,True,0,,,,0,,,,prediction max=0; ISM max=7.15256e-07,prediction max=0; ISM max=7.15256e-07
+p3_gata1_fetal,H4,diagnostic_distinction_observed,diagnostic_distinction_observed,True,252,0.6349206349206349,0.5595238095238096,0.7103174603174603,252,0.611111111111111,0.5396825396825397,0.6785714285714285,"CI=[0.559524,0.710317]","CI=[0.539683,0.678571]"
+p3_ctcf_gm12878,H1a,reproduced,reproduced,True,88614,0.0697102725372623,0.0631748140282286,0.0766516387226441,88614,0.0664253085958085,0.0623197302446337,0.0718642224285288,CI lower=0.0631748,CI lower=0.0623197
+p3_ctcf_gm12878,H1b,reproduced,reproduced,True,900,0.2958043172017512,0.2809148947301277,0.313972967722702,900,0.2884281030261334,0.2763454197086233,0.3020848953778203,eligible pool=4513; CI lower=0.280915,eligible pool=4745; CI lower=0.276345
+p3_ctcf_gm12878,H2,reproduced,not_reproduced,False,88614,-0.0103486274268646,-0.0160012960639132,-0.0051987601848692,88614,-0.0063936442869605,-0.0124799754726797,0.0025589550921304,contrast CI upper=-0.00519876,contrast CI upper=0.00255896
+p3_ctcf_gm12878,H3a,reproduced,reproduced,True,720,0.2883544414028617,0.2754980055724484,0.2988007062471953,720,0.2850834629094912,0.2689822031076929,0.3082363695564468,CI lower=0.275498,CI lower=0.268982
+p3_ctcf_gm12878,H3b,reproduced,reproduced,True,0,,,,0,,,,prediction max=0; ISM max=1.90735e-06,prediction max=0; ISM max=1.90735e-06
+p3_ctcf_gm12878,H4,diagnostic_distinction_observed,diagnostic_distinction_observed,True,351,1.0,1.0,1.0,351,1.0,1.0,1.0,"CI=[1,1]","CI=[1,1]"

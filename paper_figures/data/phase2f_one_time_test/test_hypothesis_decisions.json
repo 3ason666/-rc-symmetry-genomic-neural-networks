@@ -1,0 +1,37 @@
+[
+  {
+    "hypothesis": "H1a",
+    "status": "reproduced",
+    "evidence": "CI lower=0.0908998"
+  },
+  {
+    "hypothesis": "H1b",
+    "status": "reproduced",
+    "evidence": "CI lower=0.286864"
+  },
+  {
+    "hypothesis": "H2",
+    "status": "reproduced",
+    "evidence": "contrast CI upper=-0.00294087"
+  },
+  {
+    "hypothesis": "H3a",
+    "status": "reproduced",
+    "evidence": "CI lower=0.279053"
+  },
+  {
+    "hypothesis": "H3b",
+    "status": "reproduced",
+    "evidence": "prediction max=0; ISM max=1.43051e-06"
+  },
+  {
+    "hypothesis": "H3c",
+    "status": "exploratory_not_retested",
+    "evidence": "Transformer excluded by frozen protocol"
+  },
+  {
+    "hypothesis": "H4",
+    "status": "reproduced_as_distinction",
+    "evidence": "diagnostic rate=0.487179; CI=[0.430199,0.541311]"
+  }
+]

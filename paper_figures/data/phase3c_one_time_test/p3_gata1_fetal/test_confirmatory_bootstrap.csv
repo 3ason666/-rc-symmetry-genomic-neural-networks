@@ -1,0 +1,6 @@
+task_id,hypothesis,analysis,endpoint,estimate,ci95_low,ci95_high,p_two_sided,n,q_bh
+p3_gata1_fetal,H1a,CNN-Raw prediction asymmetry,prediction_difference,0.10400718526303158,0.09356685561050135,0.11496356846764254,0.00019998000199980003,5490,0.00024997500249975
+p3_gata1_fetal,H1b,CNN-Raw Exact ISM asymmetry in frozen prediction-consistent cohort,absolute_normalized_l1,,,,,0,1.0
+p3_gata1_fetal,H2,CNN-Aug minus CNN-Raw paired prediction asymmetry,difference,-0.02527706652972169,-0.03603659200385376,-0.01668024509867297,0.00019998000199980003,5490,0.00024997500249975
+p3_gata1_fetal,H3a,CNN-Aug residual Exact ISM asymmetry,absolute_normalized_l1,0.3222721600579709,0.3061425680790195,0.341082038802846,0.00019998000199980003,540,0.00024997500249975
+p3_gata1_fetal,H4,RCPS biological diagnostic failure rate,diagnostic_failure,0.6349206349206349,0.5595238095238096,0.7103174603174603,0.00019998000199980003,252,0.00024997500249975

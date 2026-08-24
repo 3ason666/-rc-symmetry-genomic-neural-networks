@@ -1,0 +1,60 @@
+protocol_revision: phase3d_cross_phase_overlap_audit_v1
+frozen_at_utc: 2026-08-23T11:30:00+08:00
+
+scope:
+  p2f_access_mode: isolated_read_only
+  p2f_predictions_or_attributions_allowed: false
+  p3_primary_results_must_be_completed_and_locked: true
+  p3_train_definition: union_of_rows_used_as_train_in_any_frozen_fold
+  report_per_fold_as_sensitivity: true
+
+inputs:
+  p2f_dataset_path: data/phase2/processed/phase2_matched_dataset.csv
+  p2f_dataset_sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  p2f_test_split: test
+  p2f_expected_test_rows: 3496
+  p2f_completion_path: results/phase2f_one_time_test/phase2f_completion.json
+  p2f_completion_sha256: 1e79e860a477465b88b6ccd6e4017003d2a4636bd3cde0b8f244764fdc1c30a8
+  p3_completion_path: results/phase3c_one_time_test/phase3c_completion.json
+  p3_completion_sha256: 274402579b0b6d39753fddcb6832c38e177fc9649a313f6cca92f32dc8d34d95
+  p3_tasks:
+    p3_gata1_fetal:
+      development_path: data/phase3/processed/p3_gata1_fetal_development.csv.gz
+      development_sha256: 616050adf909aca84016403eb7ea3b877aabb98952fd9664672012494407e8ab
+      expected_development_rows: 3454
+    p3_ctcf_gm12878:
+      development_path: data/phase3/processed/p3_ctcf_gm12878_development.csv.gz
+      development_sha256: 219cfdf4a3bedf1fd9dbe0e7ca30b27e0b67e27a4a16952dbacc8b2d6fc3a451
+      expected_development_rows: 55712
+
+coordinate_overlap:
+  method: half_open_grch38_interval_overlap
+  minimum_overlap_bp: 1
+  trigger_fraction_of_p3_train: 0.05
+  trigger_action: report_shared_locus_and_p3_specific_strata
+  delete_coordinate_overlaps: false
+
+exact_sequence_overlap:
+  method: sha256_of_rc_canonical_sequence
+  trigger_fraction_of_p3_train: 0.01
+  trigger_action: remove_overlapping_p3_training_rows_and_rerun_core_p3_as_sensitivity
+
+high_similarity:
+  screening_method: rc_canonical_15mer_bottom_hash_minhash
+  kmer_size: 15
+  minhash_seed: 20260823
+  sketch_size: 128
+  minimum_shared_sketch_hashes: 2
+  maximum_p2f_hash_document_frequency: 256
+  confirmation_identity_min: 0.90
+  confirmation_bidirectional_coverage_min: 0.90
+  reverse_complement_aware: true
+  trigger_action: remove_confirmed_p3_near_duplicate_training_rows_and_rerun_core_p3_as_sensitivity
+
+reporting:
+  denominators: [fraction_of_p3_train, fraction_of_p2f_test]
+  persist_raw_sequences: false
+  persist_predictions_or_attributions: false
+  sensitivity_results_replace_primary: false
+  output_dir: results/phase3d_cross_phase_overlap_audit
+

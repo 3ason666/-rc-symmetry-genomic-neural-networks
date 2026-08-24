@@ -1,0 +1,82 @@
+project_name: phase2d_rcps_confirmatory
+protocol_revision: phase2d_rcps_confirmatory_v1
+protocol_path: protocols/phase2d_rcps_confirmatory_protocol.md
+protocol_frozen_date: 2026-08-22
+scope: confirmatory_rc_handling_comparison_train_only_cv
+device: cpu
+cpu_threads: 6
+dataset:
+  path: data/phase2/processed/phase2_matched_dataset.csv
+  sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  sequence_length: 256
+  allowed_training_splits: [train, validation]
+  source_split: train
+  expected_source_rows: 16318
+  forbidden_model_splits: [validation, test]
+  test_policy: sealed_no_model_access
+cross_validation:
+  method: frozen_three_fold_chromosome_cross_validation
+  folds:
+    - fold_id: fold_a
+      holdout_chromosomes: [chr1, chr13, chr16, chr17, chr21]
+      expected_holdout_rows: 5602
+    - fold_id: fold_b
+      holdout_chromosomes: [chr4, chr6, chr12, chr15, chr20]
+      expected_holdout_rows: 5382
+    - fold_id: fold_c
+      holdout_chromosomes: [chr5, chr7, chr9, chr10, chr19]
+      expected_holdout_rows: 5334
+model:
+  conv_channels: 32
+  kernel_size: 15
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 7
+training:
+  model_types: [CNN-Raw, CNN-Aug, CNN-RCPS]
+  seeds: [42, 123, 2026]
+  batch_size: 128
+  max_epochs: 30
+  patience: 5
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  checkpoint_selection_metric: inner_validation_loss
+interpretation:
+  methods: [exact_ism, integrated_gradients, deeplift, gradient_shap]
+  primary_method: exact_ism
+  difference: logit
+  samples_per_label_per_fold: 40
+  sample_seed: 20260822
+  top_k: 8
+  prediction_consistent_max_abs_difference: 0.01
+  attribution_pearson_warning_below: 0.90
+  attribution_top8_warning_below: 0.50
+  ism_batch_size: 512
+  gradient_batch_size: 16
+  integrated_gradients_steps: 32
+  gradient_shap_samples: 16
+  random_seed: 20260822
+biological_validity:
+  status: phase2d_secondary_summit_only_phase2e_motif_resources_not_yet_frozen
+  positive_only: true
+  summit_index_zero_based: 128
+  central_window_start: 120
+  central_window_end: 136
+invariance_gates:
+  prediction_max_abs_tolerance: 1.0e-6
+  feature_equivariance_max_abs_tolerance: 1.0e-5
+  exact_ism_aligned_max_abs_tolerance: 1.0e-5
+  checkpoint_reload_max_abs_tolerance: 1.0e-6
+statistics:
+  hierarchical_bootstrap_replicates: 10000
+  hierarchical_bootstrap_seed: 20260822
+decision:
+  transformer_results_role: exploratory_only
+  allow_new_transformer_tuning: false
+  access_original_validation: false
+  unseal_test_now: false
+  permit_rcps_hyperparameter_tuning_after_results: false
+  phase2e_requires_separately_frozen_protocol: true

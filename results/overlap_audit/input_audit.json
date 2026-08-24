@@ -1,0 +1,47 @@
+{
+  "protocol_revision": "phase3d_cross_phase_overlap_audit_v1",
+  "generated_at_utc": "2026-08-23T04:03:05.572799+00:00",
+  "test_rows_loaded": true,
+  "checks": [
+    {
+      "resource": "p2f_dataset",
+      "path": "data/phase2/processed/phase2_matched_dataset.csv",
+      "expected_sha256": "54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88",
+      "observed_sha256": "54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88",
+      "passed": true
+    },
+    {
+      "resource": "p2f_completion",
+      "path": "results/phase2f_one_time_test/phase2f_completion.json",
+      "expected_sha256": "1e79e860a477465b88b6ccd6e4017003d2a4636bd3cde0b8f244764fdc1c30a8",
+      "observed_sha256": "1e79e860a477465b88b6ccd6e4017003d2a4636bd3cde0b8f244764fdc1c30a8",
+      "passed": true
+    },
+    {
+      "resource": "p3_completion",
+      "path": "results/phase3c_one_time_test/phase3c_completion.json",
+      "expected_sha256": "274402579b0b6d39753fddcb6832c38e177fc9649a313f6cca92f32dc8d34d95",
+      "observed_sha256": "274402579b0b6d39753fddcb6832c38e177fc9649a313f6cca92f32dc8d34d95",
+      "passed": true
+    },
+    {
+      "resource": "p3_gata1_fetal_development",
+      "path": "data/phase3/processed/p3_gata1_fetal_development.csv.gz",
+      "expected_sha256": "616050adf909aca84016403eb7ea3b877aabb98952fd9664672012494407e8ab",
+      "observed_sha256": "616050adf909aca84016403eb7ea3b877aabb98952fd9664672012494407e8ab",
+      "passed": true
+    },
+    {
+      "resource": "p3_ctcf_gm12878_development",
+      "path": "data/phase3/processed/p3_ctcf_gm12878_development.csv.gz",
+      "expected_sha256": "219cfdf4a3bedf1fd9dbe0e7ca30b27e0b67e27a4a16952dbacc8b2d6fc3a451",
+      "observed_sha256": "219cfdf4a3bedf1fd9dbe0e7ca30b27e0b67e27a4a16952dbacc8b2d6fc3a451",
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "config_sha256": "e65f0676832061ce7af0d9ad0f2d2539a6515f28504978bd2599559189a322a4",
+  "protocol_sha256": "9e0a295f5c2ec8e095c4417deeb3626b640ee737eb7baf1c09c0d6c8b35a1535",
+  "runner_sha256": "593eb74f0be1a404011217807c51ea4544d4887132314b03279a01f039a8982c",
+  "observed_p2f_test_rows": 3496
+}

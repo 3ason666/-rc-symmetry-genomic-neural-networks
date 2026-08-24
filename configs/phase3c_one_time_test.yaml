@@ -1,0 +1,106 @@
+project_name: phase3c_one_time_test
+protocol_revision: phase3c_one_time_test_v1
+protocol_path: protocols/phase3c_one_time_test_protocol.md
+authorization_date: "2026-08-23"
+device: cpu
+cpu_threads: 6
+
+training:
+  source_results: results/phase3b_development_training/full
+  completion_path: results/phase3b_development_training/full/completion.json
+  training_manifest_path: metadata/phase3b_training_manifest.json
+  checkpoint_manifest_path: metadata/phase3c_checkpoint_manifest.json
+  model_types: [CNN-Raw, CNN-Aug, CNN-RCPS]
+  folds: [1, 2, 3]
+  seeds: [42, 123, 2026]
+  expected_count_per_task: 27
+  expected_total_count: 54
+  retraining_allowed: false
+
+tasks:
+  p3_gata1_fetal:
+    role: primary_confirmatory
+    sealed_test_path: data/phase3/processed/p3_gata1_fetal_sealed_test.csv.gz
+    sealed_test_sha256: 56357841b7241294d81900a7f641e76a1fe1385ab49454fb444913c2f23dce1a
+    expected_rows: 610
+    expected_per_label: 305
+    chromosomes: [chr11, chr12, chr14]
+    pwm_resource: metadata/jaspar_MA0035.5_GATA1_2026.json
+    base_attribution_per_chromosome_per_label: 10
+    base_attribution_expected_samples: 60
+  p3_ctcf_gm12878:
+    role: supportive_generalization
+    sealed_test_path: data/phase3/processed/p3_ctcf_gm12878_sealed_test.csv.gz
+    sealed_test_sha256: ed525f3137b7ad1487e48da032d86a1fd1e3d67fc035e870b3fb001884f55a01
+    expected_rows: 9846
+    expected_per_label: 4923
+    chromosomes: [chr11, chr16, chr19, chr22]
+    pwm_resource: metadata/jaspar_MA0139.2_CTCF_2026.json
+    base_attribution_per_chromosome_per_label: 10
+    base_attribution_expected_samples: 80
+
+prediction:
+  threshold: 0.5
+  batch_size: 256
+  evaluate_both_orientations: true
+  report_checkpoint_runs: true
+  report_model_ensemble: true
+
+attribution:
+  method: exact_ism
+  difference: logit
+  base_selection_salt: phase3c_base_v1
+  h1b_selection_salt: phase3c_h1b_v1
+  h1b_target_samples: 100
+  h1b_model: CNN-Raw
+  h1b_consistency_definition: absolute_difference_of_nine_fit_mean_probabilities
+  prediction_consistent_max_abs_difference: 0.01
+  top_k: 8
+  ism_batch_size: 512
+
+biological:
+  relative_score_threshold: 0.80
+  top_k: 7
+  circular_shift_count: 64
+  circular_shift_seed: 20260823
+  low_recall_threshold: 0.5
+
+invariance_gates:
+  prediction_max_abs_tolerance: 1.0e-6
+  exact_ism_aligned_max_abs_tolerance: 1.0e-5
+
+statistics:
+  hierarchical_bootstrap_replicates: 10000
+  hierarchical_bootstrap_seed: 20260823
+
+hypothesis_decisions:
+  h1a_raw_prediction_ci_lower_gt: 0.01
+  h1b_raw_exact_ism_ci_lower_gt: 0.05
+  h2_aug_minus_raw_prediction_ci_upper_lt: 0.0
+  h3a_aug_exact_ism_ci_lower_gt: 0.05
+  h3b_prediction_max_le: 1.0e-6
+  h3b_exact_ism_matrix_max_le: 1.0e-5
+  h4_diagnostic_ci_lower_gt: 0.0
+
+interpretability_gates:
+  minimum_h1b_prediction_consistent_samples: 100
+  minimum_validation_median_auroc: 0.80
+  minimum_test_ensemble_auroc: 0.75
+  maximum_primary_ci_width: 0.15
+  ctcf_non_support_default: inconclusive
+  ctcf_boundary_language_requires_all_gates: true
+
+execution:
+  output_dir: results/phase3c_one_time_test
+  ledger_path: results/phase3c_one_time_test/unseal_ledger.json
+  completion_path: results/phase3c_one_time_test/phase3c_completion.json
+  allow_force_rerun: false
+  resume_same_frozen_run_only: true
+
+decision:
+  test_unseal_authorized: true
+  change_protocol_after_unseal: false
+  tune_after_test: false
+  select_models_after_test: false
+  transformer_role: exploratory_only_not_retested
+  post_test_retraining_allowed: false

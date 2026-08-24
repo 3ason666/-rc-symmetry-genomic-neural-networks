@@ -1,0 +1,20 @@
+{
+  "resource": "JASPAR CORE",
+  "release": "2026",
+  "matrix_id": "MA0035.5",
+  "name": "GATA1",
+  "species": "Homo sapiens",
+  "tax_id": 9606,
+  "data_type": "ChIP-seq",
+  "source": "ReMap",
+  "license": "CC BY 4.0",
+  "retrieved_on": "2026-08-22",
+  "profile_url": "https://jaspar.elixir.no/matrix/MA0035.5/",
+  "alphabet": ["A", "C", "G", "T"],
+  "pfm": {
+    "A": [60641, 1853, 67766, 1998, 20570, 69267, 2744],
+    "C": [765, 1471, 618, 988, 856, 652, 2712],
+    "G": [3025, 65937, 1238, 1292, 710, 595, 62419],
+    "T": [7397, 2567, 2206, 67550, 49692, 1314, 3953]
+  }
+}

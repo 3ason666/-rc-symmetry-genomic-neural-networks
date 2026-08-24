@@ -1,0 +1,6 @@
+hypothesis,analysis,endpoint,n_folds,n_fold_seed_cells,n_paired_rows,estimate,ci95_low,ci95_high,bootstrap_replicates,bootstrap_seed
+H1a,CNN-Raw prediction asymmetry,prediction_difference,3,9,48954,0.10150524421222712,0.09245360402160965,0.11267702918473835,10000,20260922
+H1b,CNN-Raw Exact ISM asymmetry among prediction-consistent samples,absolute_normalized_l1,3,9,99,0.33061879918839426,0.3119004790014065,0.35034392170274975,10000,20260923
+H3a,CNN-Aug residual Exact ISM asymmetry,absolute_normalized_l1,3,9,720,0.31047589795856695,0.2831527584349861,0.3356813489198163,10000,20260924
+H3a,CNN-Aug residual Exact ISM asymmetry among prediction-consistent samples,absolute_normalized_l1,3,9,112,0.29608132532827064,0.2533311725136289,0.3397757183320448,10000,20260925
+H3b,CNN-RCPS Exact ISM numerical residual,absolute_normalized_l1,3,9,720,4.132585165182849e-09,3.350771751766279e-09,5.015139558453577e-09,10000,20260926

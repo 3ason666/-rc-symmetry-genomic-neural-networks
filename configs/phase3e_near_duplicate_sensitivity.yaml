@@ -1,0 +1,49 @@
+project_name: phase3e_near_duplicate_sensitivity
+protocol_revision: phase3e_near_duplicate_sensitivity_v1
+protocol_path: protocols/phase3e_near_duplicate_sensitivity_protocol.md
+authorization_basis: prespecified_phase3a_post_primary_cross_phase_sensitivity
+device: cpu
+cpu_threads: 6
+
+frozen_inputs:
+  phase3a_config_path: configs/phase3a_external_replication.yaml
+  phase3b_manifest_path: metadata/phase3b_training_manifest.json
+  phase3c_config_path: configs/phase3c_one_time_test.yaml
+  phase3c_config_sha256: 2ab5ffeaa66a39c33766d55c6ab0c7661309868f76b60dc538cfbd86610ed80a
+  phase3c_completion_path: results/phase3c_one_time_test/phase3c_completion.json
+  phase3c_completion_sha256: 274402579b0b6d39753fddcb6832c38e177fc9649a313f6cca92f32dc8d34d95
+  phase3d_completion_path: results/phase3d_cross_phase_overlap_audit/completion.json
+  phase3d_completion_sha256: eb42f0f82a4580ad9afdeb084171d41feccce03a8d9a77b20a90c0ad24f8ad48
+  exclusion_path: results/phase3d_cross_phase_overlap_audit/high_similarity_pairs.csv.gz
+  exclusion_sha256: d934537879270399c7bf93f4e42e645edd143d5ef9ca419c6d5ff6eab6eb6bb9
+
+exclusion_rule:
+  definition: confirmed_cross_phase_near_duplicate
+  identity_min: 0.90
+  bidirectional_coverage_min: 0.90
+  orientation_aware: true
+  exclude_from: training_rows_only
+  retain_validation_rows: true
+  retain_p3_test_rows: true
+  expected_unique_ids:
+    p3_gata1_fetal: 181
+    p3_ctcf_gm12878: 668
+
+training:
+  model_types: [CNN-Raw, CNN-Aug, CNN-RCPS]
+  folds: [1, 2, 3]
+  seeds: [42, 123, 2026]
+  expected_count_per_task: 27
+  expected_total_count: 54
+  tune_hyperparameters: false
+  select_models_after_test: false
+
+execution:
+  output_dir: results/phase3e_near_duplicate_sensitivity
+  training_dir: results/phase3e_near_duplicate_sensitivity/training
+  evaluation_dir: results/phase3e_near_duplicate_sensitivity/evaluation
+  completion_path: results/phase3e_near_duplicate_sensitivity/completion.json
+  allow_force_rerun: false
+  resume_completed_training_runs: true
+  primary_p3_results_replaced: false
+

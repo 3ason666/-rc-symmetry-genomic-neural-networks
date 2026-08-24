@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-21T16:28:46.595091+00:00",
+  "passed": true,
+  "method": "Compare chr1-chr22 component accession versions and lengths between the frozen GCA_000001405.15 assembly and Ensembl's GCA_000001405.29 assembly, then compare one deterministic 256-bp candidate per chromosome against the corresponding NCBI RefSeq chromosome accession.",
+  "ncbi_assembly_report_urls": {
+    "GCA_000001405.15": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.15_GRCh38/GCA_000001405.15_GRCh38_assembly_report.txt",
+    "GCA_000001405.29": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.29_GRCh38.p14/GCA_000001405.29_GRCh38.p14_assembly_report.txt"
+  },
+  "ncbi_assembly_report_sha256": {
+    "GCA_000001405.15": "aa733ce92719f6339b3a4540137d4322894434363314c4b7704ba6691e9eab66",
+    "GCA_000001405.29": "64318ddff470b69b261a667d813210044f60d4ce654253a547db80ff73638d38"
+  },
+  "primary_component_identity": true,
+  "primary_components": {
+    "chr1": {
+      "genbank_accession": "CM000663.2",
+      "refseq_accession": "NC_000001.11",
+      "length": 248956422,
+      "ucsc_name": "chr1"
+    },
+    "chr2": {
+      "genbank_accession": "CM000664.2",
+      "refseq_accession": "NC_000002.12",
+      "length": 242193529,
+      "ucsc_name": "chr2"
+    },
+    "chr3": {
+      "genbank_accession": "CM000665.2",
+      "refseq_accession": "NC_000003.12",
+      "length": 198295559,
+      "ucsc_name": "chr3"
+    },
+    "chr4": {
+      "genbank_accession": "CM000666.2",
+      "refseq_accession": "NC_000004.12",
+      "length": 190214555,
+      "ucsc_name": "chr4"
+    },
+    "chr5": {
+      "genbank_accession": "CM000667.2",
+      "refseq_accession": "NC_000005.10",
+      "length": 181538259,
+      "ucsc_name": "chr5"
+    },
+    "chr6": {
+      "genbank_accession": "CM000668.2",
+      "refseq_accession": "NC_000006.12",
+      "length": 170805979,
+      "ucsc_name": "chr6"
+    },
+    "chr7": {
+      "genbank_accession": "CM000669.2",
+      "refseq_accession": "NC_000007.14",
+      "length": 159345973,
+      "ucsc_name": "chr7"
+    },
+    "chr8": {
+      "genbank_accession": "CM000670.2",
+      "refseq_accession": "NC_000008.11",
+      "length": 145138636,
+      "ucsc_name": "chr8"
+    },
+    "chr9": {
+      "genbank_accession": "CM000671.2",
+      "refseq_accession": "NC_000009.12",
+      "length": 138394717,
+      "ucsc_name": "chr9"
+    },
+    "chr10": {
+      "genbank_accession": "CM000672.2",
+      "refseq_accession": "NC_000010.11",
+      "length": 133797422,
+      "ucsc_name": "chr10"
+    },
+    "chr11": {
+      "genbank_accession": "CM000673.2",
+      "refseq_accession": "NC_000011.10",
+      "length": 135086622,
+      "ucsc_name": "chr11"
+    },
+    "chr12": {
+      "genbank_accession": "CM000674.2",
+      "refseq_accession": "NC_000012.12",
+      "length": 133275309,
+      "ucsc_name": "chr12"
+    },
+    "chr13": {
+      "genbank_accession": "CM000675.2",
+      "refseq_accession": "NC_000013.11",
+      "length": 114364328,
+      "ucsc_name": "chr13"
+    },
+    "chr14": {
+      "genbank_accession": "CM000676.2",
+      "refseq_accession": "NC_000014.9",
+      "length": 107043718,
+      "ucsc_name": "chr14"
+    },
+    "chr15": {
+      "genbank_accession": "CM000677.2",
+      "refseq_accession": "NC_000015.10",
+      "length": 101991189,
+      "ucsc_name": "chr15"
+    },
+    "chr16": {
+      "genbank_accession": "CM000678.2",
+      "refseq_accession": "NC_000016.10",
+      "length": 90338345,
+      "ucsc_name": "chr16"
+    },
+    "chr17": {
+      "genbank_accession": "CM000679.2",
+      "refseq_accession": "NC_000017.11",
+      "length": 83257441,
+      "ucsc_name": "chr17"
+    },
+    "chr18": {
+      "genbank_accession": "CM000680.2",
+      "refseq_accession": "NC_000018.10",
+      "length": 80373285,
+      "ucsc_name": "chr18"
+    },
+    "chr19": {
+      "genbank_accession": "CM000681.2",
+      "refseq_accession": "NC_000019.10",
+      "length": 58617616,
+      "ucsc_name": "chr19"
+    },
+    "chr20": {
+      "genbank_accession": "CM000682.2",
+      "refseq_accession": "NC_000020.11",
+      "length": 64444167,
+      "ucsc_name": "chr20"
+    },
+    "chr21": {
+      "genbank_accession": "CM000683.2",
+      "refseq_accession": "NC_000021.9",
+      "length": 46709983,
+      "ucsc_name": "chr21"
+    },
+    "chr22": {
+      "genbank_accession": "CM000684.2",
+      "refseq_accession": "NC_000022.11",
+      "length": 50818468,
+      "ucsc_name": "chr22"
+    }
+  },
+  "ensembl_assembly": {
+    "assembly_name": "GRCh38.p14",
+    "assembly_accession": "GCA_000001405.29",
+    "default_coord_system_version": "GRCh38",
+    "primary_chromosome_lengths_match": true
+  },
+  "coordinate_and_sequence_spot_checks": [
+    {
+      "chromosome": "chr1",
+      "sample_id": "ENCFF148JKK:9678",
+      "start": 1005019,
+      "end": 1005275,
+      "refseq_accession": "NC_000001.11",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr2",
+      "sample_id": "ENCFF148JKK:9126",
+      "start": 807431,
+      "end": 807687,
+      "refseq_accession": "NC_000002.12",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr3",
+      "sample_id": "ENCFF148JKK:2660",
+      "start": 3110096,
+      "end": 3110352,
+      "refseq_accession": "NC_000003.12",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr4",
+      "sample_id": "ENCFF148JKK:8533",
+      "start": 996110,
+      "end": 996366,
+      "refseq_accession": "NC_000004.12",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr5",
+      "sample_id": "ENCFF148JKK:5274",
+      "start": 657636,
+      "end": 657892,
+      "refseq_accession": "NC_000005.10",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr6",
+      "sample_id": "ENCFF148JKK:3905",
+      "start": 490404,
+      "end": 490660,
+      "refseq_accession": "NC_000006.12",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr7",
+      "sample_id": "ENCFF148JKK:1143",
+      "start": 148941,
+      "end": 149197,
+      "refseq_accession": "NC_000007.14",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr8",
+      "sample_id": "ENCFF148JKK:2110",
+      "start": 274291,
+      "end": 274547,
+      "refseq_accession": "NC_000008.11",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr9",
+      "sample_id": "ENCFF148JKK:14405",
+      "start": 251458,
+      "end": 251714,
+      "refseq_accession": "NC_000009.12",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr10",
+      "sample_id": "ENCFF148JKK:6858",
+      "start": 87253,
+      "end": 87509,
+      "refseq_accession": "NC_000010.11",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr11",
+      "sample_id": "ENCFF148JKK:286",
+      "start": 207548,
+      "end": 207804,
+      "refseq_accession": "NC_000011.10",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr12",
+      "sample_id": "ENCFF148JKK:6900",
+      "start": 264331,
+      "end": 264587,
+      "refseq_accession": "NC_000012.12",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr13",
+      "sample_id": "ENCFF148JKK:9616",
+      "start": 18921150,
+      "end": 18921406,
+      "refseq_accession": "NC_000013.11",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr14",
+      "sample_id": "ENCFF148JKK:4207",
+      "start": 20044298,
+      "end": 20044554,
+      "refseq_accession": "NC_000014.9",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr15",
+      "sample_id": "ENCFF148JKK:4210",
+      "start": 22892440,
+      "end": 22892696,
+      "refseq_accession": "NC_000015.10",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr16",
+      "sample_id": "ENCFF148JKK:12666",
+      "start": 113552,
+      "end": 113808,
+      "refseq_accession": "NC_000016.10",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr17",
+      "sample_id": "ENCFF148JKK:12898",
+      "start": 601576,
+      "end": 601832,
+      "refseq_accession": "NC_000017.11",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr18",
+      "sample_id": "ENCFF148JKK:9392",
+      "start": 306702,
+      "end": 306958,
+      "refseq_accession": "NC_000018.10",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr19",
+      "sample_id": "ENCFF148JKK:7853",
+      "start": 516635,
+      "end": 516891,
+      "refseq_accession": "NC_000019.10",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr20",
+      "sample_id": "ENCFF148JKK:8088",
+      "start": 266661,
+      "end": 266917,
+      "refseq_accession": "NC_000020.11",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr21",
+      "sample_id": "ENCFF148JKK:7978",
+      "start": 14271137,
+      "end": 14271393,
+      "refseq_accession": "NC_000021.9",
+      "sequence_match": true,
+      "length": 256
+    },
+    {
+      "chromosome": "chr22",
+      "sample_id": "ENCFF148JKK:6592",
+      "start": 16781789,
+      "end": 16782045,
+      "refseq_accession": "NC_000022.11",
+      "sequence_match": true,
+      "length": 256
+    }
+  ],
+  "conclusion": "The Ensembl-retrieved chr1-chr22 windows are reference-equivalent for this study."
+}

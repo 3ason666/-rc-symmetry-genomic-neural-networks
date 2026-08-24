@@ -1,0 +1,50 @@
+project_name: phase15_full_preflight
+experiment_stage: full
+device: cpu
+data:
+  regime: hard_synthetic
+  sequence_length: 64
+  causal_motif: TGATTTAT
+  decoy_motifs: [TGACTTAT, TGATCTAT]
+  causal_count_probabilities_positive: [0.0, 0.5, 0.5]
+  pwm_match_probabilities: [0.97, 0.88]
+  pwm_strength_probabilities: [0.5, 0.5]
+  causal_mutation_probabilities: [0.5, 0.5]
+  decoy_count_probabilities_by_label:
+    positive: [0.5, 0.5]
+    negative: [0.0, 1.0]
+  train_size: 120
+  validation_size: 40
+  test_size: 40
+  data_seed: 999151
+  label_noise_by_split: {train: 0.00, validation: 0.00, test: 0.00}
+  shortcut: {enabled: false}
+model:
+  conv_channels: 8
+  kernel_size: 5
+  second_conv: true
+  second_conv_channels: 6
+  second_kernel_size: 3
+training:
+  seeds: [42, 123]
+  model_types: [CNN-Raw, CNN-Aug, CNN-Pair, CNN-PostHoc, CNN-RCPS]
+  batch_size: 32
+  max_epochs: 1
+  patience: 1
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+interpretation:
+  method: ism
+  difference: logit
+  positive_samples: 3
+  sample_seed: 999
+  batch_size: 256
+  top_k: 8
+  prediction_consistent_epsilon: 0.01
+  attribution_asymmetric_pearson: 0.90
+statistics:
+  bootstrap_replicates: 100
+  bootstrap_seed: 5150

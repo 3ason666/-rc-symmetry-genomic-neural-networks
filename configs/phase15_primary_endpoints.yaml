@@ -1,0 +1,18 @@
+frozen_before_full_test_review: true
+prediction_consistent_epsilon: 0.01
+attribution_asymmetric_definition:
+  primary_metric: aligned_absolute_ism_pearson
+  threshold: 0.90
+primary_endpoints:
+  H1a: CNN-Raw absolute probability difference between S and RC(S)
+  H1b: fraction prediction-consistent and attribution-asymmetric in CNN-Raw
+  H2: paired change in absolute probability difference for CNN-Aug and CNN-Pair versus CNN-Raw
+  H3a: paired attribution Pearson difference for CNN-Aug versus CNN-RCPS among prediction-consistent samples
+  H3b: maximum prediction and aligned full-ISM error for CNN-RCPS
+  H4: shortcut attribution mass minus causal attribution mass under shortcut shift
+confirmatory_seeds: [42, 123, 2026]
+bootstrap:
+  hierarchy: resample seeds then paired samples within seed
+  replicates: 2000
+multiple_testing: Benjamini-Hochberg FDR
+test_set_rule: no model, threshold, epoch, or hyperparameter selection using full test results

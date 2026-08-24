@@ -1,0 +1,284 @@
+{
+  "protocol_revision": "phase2f_one_time_test_v1",
+  "created_before_test_rows_loaded": true,
+  "authorization_date": "2026-08-22",
+  "resources": {
+    "config": {
+      "path": "configs/phase2f_one_time_test.yaml",
+      "sha256": "f9362359f6d520b5f1bb7c4350da0454bb1d26e8570e27e2b7cc33afb8e0b5df"
+    },
+    "protocol": {
+      "path": "protocols/phase2f_one_time_test_protocol.md",
+      "sha256": "e79819bb3b356193b3241120af5d3e548a375369dbbda55e1ce6cc224921a161"
+    },
+    "runner": {
+      "path": "scripts/run_phase2f.py",
+      "sha256": "b3599b5f41dbcab47ad82660f526be1d42889b97c6af8ef16ea0f5fac8ec03ce"
+    },
+    "dataset": {
+      "path": "data/phase2/processed/phase2_matched_dataset.csv",
+      "sha256": "54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88"
+    },
+    "pwm": {
+      "path": "metadata/jaspar_MA0035.5_GATA1_2026.json",
+      "sha256": "a180d7d4c7cbb159f1c9d25eb2a6b11774ca07467bb9bbee2e55a3e47413e9ee"
+    },
+    "phase2d_gate": {
+      "path": "results/phase2d_rcps_confirmatory/phase2d_gate_assessment.json",
+      "sha256": "67f5aaf147e4cd21a4b16546fcf2afcb8e9bb84377c1fd1c6612b5c08a444958"
+    },
+    "phase2e_gate": {
+      "path": "results/phase2e_biological_correctness/phase2e_gate_assessment.json",
+      "sha256": "530aae552d842726d39d4345287c1ae26ad4b0c543e99dfe8b46b3508b536ba1"
+    }
+  },
+  "prior_test_access": {
+    "phase2d_test_rows": 0,
+    "phase2e_test_rows": 0
+  },
+  "checkpoints": [
+    {
+      "run_name": "fold_a__cnn_aug__seed_42",
+      "fold_id": "fold_a",
+      "model_type": "CNN-Aug",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_aug__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "9018ac17bbcc30498a7bbaabe6328774eacc1d7f972bec55bd39b797a9b9d5c9"
+    },
+    {
+      "run_name": "fold_a__cnn_rcps__seed_42",
+      "fold_id": "fold_a",
+      "model_type": "CNN-RCPS",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_rcps__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "034e63585b4241c64554bf17ec3ce68368d3a05a25018505c24c2f0550787d2c"
+    },
+    {
+      "run_name": "fold_a__cnn_raw__seed_42",
+      "fold_id": "fold_a",
+      "model_type": "CNN-Raw",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_raw__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "25495b60f32dabc7c21018017303286dc7770b49fe527e2789e1af8e5fe5a605"
+    },
+    {
+      "run_name": "fold_a__cnn_aug__seed_123",
+      "fold_id": "fold_a",
+      "model_type": "CNN-Aug",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_aug__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "4da7451bd6e5911165a7049c0f0a1f51ceeb20a6ea129ed8978d3ba03c90b002"
+    },
+    {
+      "run_name": "fold_a__cnn_rcps__seed_123",
+      "fold_id": "fold_a",
+      "model_type": "CNN-RCPS",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_rcps__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "8ad65d26abd71f95ee3ad3cbbd7b722fe741d9d378932d0fb4297adf4c6e7d6c"
+    },
+    {
+      "run_name": "fold_a__cnn_raw__seed_123",
+      "fold_id": "fold_a",
+      "model_type": "CNN-Raw",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_raw__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "daf82c39eecd3bf4fa57f7a6d329a5ebe53aea503dcf23017b0565f886b67dd6"
+    },
+    {
+      "run_name": "fold_a__cnn_aug__seed_2026",
+      "fold_id": "fold_a",
+      "model_type": "CNN-Aug",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_aug__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "1c9ae59b66593e32c220f653b1b8a969db1c5e834d321b95f9fbd0a5baf91f01"
+    },
+    {
+      "run_name": "fold_a__cnn_rcps__seed_2026",
+      "fold_id": "fold_a",
+      "model_type": "CNN-RCPS",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_rcps__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "d1060c0911e705b9088b10ce46f8dc7ac424a9c3a9ca9a8510a08596c6622ac1"
+    },
+    {
+      "run_name": "fold_a__cnn_raw__seed_2026",
+      "fold_id": "fold_a",
+      "model_type": "CNN-Raw",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_a__cnn_raw__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "23486added70460464149730e0cb30547b44cdde3c98a2667866dfe591b65c7f"
+    },
+    {
+      "run_name": "fold_b__cnn_aug__seed_42",
+      "fold_id": "fold_b",
+      "model_type": "CNN-Aug",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_aug__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "933e71b97800684fdf2503805360d66918de34b4f7923de48fd0ad7a32996b13"
+    },
+    {
+      "run_name": "fold_b__cnn_rcps__seed_42",
+      "fold_id": "fold_b",
+      "model_type": "CNN-RCPS",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_rcps__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "4fc15117dab22154331def6fb79c73346cc59ad50b4c15a2d2ca3bb0597e6207"
+    },
+    {
+      "run_name": "fold_b__cnn_raw__seed_42",
+      "fold_id": "fold_b",
+      "model_type": "CNN-Raw",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_raw__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "b0a6b178768322edb9f66b2dc93abf6ab993a5d80ef6f1d0c3c83af5ea84f864"
+    },
+    {
+      "run_name": "fold_b__cnn_aug__seed_123",
+      "fold_id": "fold_b",
+      "model_type": "CNN-Aug",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_aug__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "4e0ae833f841555082b57b13b5dfd73cb320ea6024098f5f66b0dafbc3953ad9"
+    },
+    {
+      "run_name": "fold_b__cnn_rcps__seed_123",
+      "fold_id": "fold_b",
+      "model_type": "CNN-RCPS",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_rcps__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "ee53b16c129b0d402207f86f65fe9fb2d2a0f3e66f46943486ed01a9ab06c62d"
+    },
+    {
+      "run_name": "fold_b__cnn_raw__seed_123",
+      "fold_id": "fold_b",
+      "model_type": "CNN-Raw",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_raw__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "b1e5ef5989b112d5733a402091d1161441d5cf87fae15b4b5c44d9997bf1191d"
+    },
+    {
+      "run_name": "fold_b__cnn_aug__seed_2026",
+      "fold_id": "fold_b",
+      "model_type": "CNN-Aug",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_aug__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "2b6c4a7ba8822f9e72ba0531b19ccf82ed8143a1b94ee84b6e511eb742f08683"
+    },
+    {
+      "run_name": "fold_b__cnn_rcps__seed_2026",
+      "fold_id": "fold_b",
+      "model_type": "CNN-RCPS",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_rcps__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "c437e13dfe7d8462a6a4a42f807ae56f4c4cb3d5a372a7aadc3c9a662eeb6e23"
+    },
+    {
+      "run_name": "fold_b__cnn_raw__seed_2026",
+      "fold_id": "fold_b",
+      "model_type": "CNN-Raw",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_b__cnn_raw__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "7f007462346423821f29e7739c3d22296c3b73fc57d70d3c5a765524d59565c6"
+    },
+    {
+      "run_name": "fold_c__cnn_aug__seed_42",
+      "fold_id": "fold_c",
+      "model_type": "CNN-Aug",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_aug__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "a10a32cc619a49d94af0871a8e09922563b75b8d98062ce7626a794e724c0138"
+    },
+    {
+      "run_name": "fold_c__cnn_rcps__seed_42",
+      "fold_id": "fold_c",
+      "model_type": "CNN-RCPS",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_rcps__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "647b48c79c1e27db210d8eadeb27b335b3392a814a60cfd09e0012a873d097bf"
+    },
+    {
+      "run_name": "fold_c__cnn_raw__seed_42",
+      "fold_id": "fold_c",
+      "model_type": "CNN-Raw",
+      "seed": 42,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_raw__seed_42/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "a817bc8a26286367d7efbf9738a1f3ca5971161029af0fb9da6e69985978dffd"
+    },
+    {
+      "run_name": "fold_c__cnn_aug__seed_123",
+      "fold_id": "fold_c",
+      "model_type": "CNN-Aug",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_aug__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "d696402316a7aae76a8b2b75cb3a2e6dfebe2f0550ad8bfb93a83471e8d6033f"
+    },
+    {
+      "run_name": "fold_c__cnn_rcps__seed_123",
+      "fold_id": "fold_c",
+      "model_type": "CNN-RCPS",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_rcps__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "88f8edfef0ecd3d5adc837ee21d27cd5222c2f4c665f48fd83b5c35714dae645"
+    },
+    {
+      "run_name": "fold_c__cnn_raw__seed_123",
+      "fold_id": "fold_c",
+      "model_type": "CNN-Raw",
+      "seed": 123,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_raw__seed_123/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "30b4cd6303f06e192aa4893bb3d5333344ce5505d025e40042ee5a866fcbc876"
+    },
+    {
+      "run_name": "fold_c__cnn_aug__seed_2026",
+      "fold_id": "fold_c",
+      "model_type": "CNN-Aug",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_aug__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "d7b12e8b2019d61535721fcd1324447b46f777ab1bbd8eba2f5e6ceb5e463801"
+    },
+    {
+      "run_name": "fold_c__cnn_rcps__seed_2026",
+      "fold_id": "fold_c",
+      "model_type": "CNN-RCPS",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_rcps__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 18229,
+      "checkpoint_sha256": "0cfe2ed1efa87f84ae0b5d589c4f70d8e2602db2a8afc21e3e8caf0a31029af2"
+    },
+    {
+      "run_name": "fold_c__cnn_raw__seed_2026",
+      "fold_id": "fold_c",
+      "model_type": "CNN-Raw",
+      "seed": 2026,
+      "checkpoint_path": "results/phase2d_rcps_confirmatory/runs/fold_c__cnn_raw__seed_2026/best_checkpoint.pt",
+      "checkpoint_size": 33013,
+      "checkpoint_sha256": "7f87c4f550b0458396e25b701f344a9f217f4314f3113aa62e9e7b6093927e55"
+    }
+  ]
+}

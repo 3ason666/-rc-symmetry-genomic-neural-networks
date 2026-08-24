@@ -1,0 +1,15 @@
+PHASE 2 FROZEN CHROMOSOME SPLIT
+Version: 1.0 candidate freeze
+Generated UTC: 2026-08-21T16:34:10.707446+00:00
+Matching seed: 20260821
+Dataset SHA-256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+
+TRAIN: chr1, chr4, chr5, chr6, chr7, chr9, chr10, chr12, chr13, chr15, chr16, chr17, chr19, chr20, chr21
+  total=16318 positive=8159 negative=8159
+VALIDATION: chr2, chr11, chr22
+  total=3496 positive=1748 negative=1748
+TEST: chr3, chr8, chr14, chr18
+  total=3496 positive=1748 negative=1748
+
+Leakage gate passed: True
+Formal training allowed: True

@@ -1,0 +1,41 @@
+PHASE 2 CHROMOSOME SPLIT PLAN
+Version: 0.1 provisional
+Date: 2026-08-21
+
+Purpose
+Prevent overlapping, nearby, duplicated, or reverse-complement-equivalent genomic windows
+from leaking across train, validation, and test.
+
+Eligible chromosomes
+Primary analysis uses autosomes chr1-chr22. chrX, chrY, chrM, alternative contigs, patches,
+decoys, and unlocalized contigs are excluded from the primary split. Sex chromosomes may be
+reported only as a separately declared sensitivity analysis.
+
+Selection timing
+1. Download and checksum the frozen candidate files.
+2. Apply all sequence, blacklist, overlap, and class-definition filters.
+3. Count retained positives and candidate matched negatives per chromosome.
+4. Without training a model or viewing any model output, assign whole chromosomes to splits.
+5. Save the final chromosome lists and their class counts; never optimize the assignment on
+   test performance.
+
+Deterministic allocation rule
+- Target approximately 70% train, 15% validation, and 15% test by retained positive count.
+- Require both classes on every selected validation and test chromosome.
+- Enumerate candidate validation/test chromosome sets in lexical chromosome order.
+- Minimize, in order: absolute deviation from target positive fractions; absolute deviation
+  from target negative fractions after matching; total number of held-out chromosomes.
+- Resolve any exact tie by the lexicographically smallest validation list, then test list.
+- Record the allocation code version and SHA-256 of the count table.
+
+Post-assignment leakage audit
+- No base-pair overlap across splits.
+- No two windows derived from the same original peak across splits.
+- No identical sequences across splits.
+- No canonical-key collision where key=min(S,RC(S)).
+- Report near-duplicate and low-complexity rates without silently removing test failures.
+
+Current status
+PENDING RETAINED CHROMOSOME COUNTS. No chromosome has yet been assigned and no formal
+training is allowed.
+

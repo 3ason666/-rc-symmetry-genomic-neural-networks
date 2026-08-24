@@ -1,0 +1,196 @@
+project_name: phase3a_external_replication
+protocol_revision: phase3a_external_replication_selection_v2
+protocol_path: protocols/phase3a_external_replication_selection_protocol.md
+freeze_date: "2026-08-23"
+candidate_registry_path: metadata/phase3a_candidate_registry.json
+
+phase2_boundary:
+  completion_path: results/phase2f_one_time_test/phase2f_completion.json
+  required_status: completed
+  test_data_access_allowed: false
+  test_prediction_access_allowed: false
+  test_attribution_access_allowed: false
+  p2f_rerun_allowed: false
+
+common_dataset:
+  organism: Homo sapiens
+  assembly: GRCh38
+  primary_chromosomes: [chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr20, chr21, chr22]
+  sequence_length_bp: 256
+  reference_fasta_path: data/phase2/raw/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta
+  blacklist_path: data/phase2/raw/ENCFF356LFX.bed.gz
+
+tasks:
+  - task_id: p3_gata1_fetal
+    role: primary_confirmatory_same_tf_different_cellular_environment
+    target: GATA1
+    biosample: human_fetal_erythroblast_16_19_weeks
+    chip_experiment: ENCSR000EXR
+    primary_peak_file: ENCFF802VPT
+    conservative_peak_file: ENCFF305RPQ
+    accessibility_experiments: [ENCSR059YWJ, ENCSR514POY]
+    accessibility_peak_files: [ENCFF253NOJ, ENCFF404PZM]
+    accessibility_combination: union_max_overlapping_peak_signal
+    accessibility_biosample_mismatch_disclosed: true
+    motif_id: MA0035.5
+    motif_resource_path: metadata/jaspar_MA0035.5_GATA1_2026.json
+  - task_id: p3_ctcf_gm12878
+    role: supportive_generalization_different_tf_different_cellular_environment
+    target: CTCF
+    biosample: GM12878
+    chip_experiment: ENCSR000DZN
+    primary_peak_file: ENCFF138REW
+    conservative_peak_file: ENCFF796WRU
+    accessibility_experiments: [ENCSR637XSC]
+    accessibility_peak_files: [ENCFF687HBT]
+    accessibility_combination: replicated_peak_signal
+    accessibility_biosample_mismatch_disclosed: false
+    motif_id: MA0139.2
+    motif_resource_path: metadata/jaspar_MA0139.2_CTCF_2026.json
+
+sample_construction:
+  positive_center: narrowPeak_summit
+  require_accessibility_overlap: true
+  negative_peak_boundary_buffer_bp: 128
+  match_ratio: 1.0
+  match_without_replacement: true
+  gc_bin_width: 0.02
+  accessibility_quantiles: 10
+  matching_seed: 20260823
+  random_genomic_negative_role: sensitivity_only
+  fetal_dnase_sensitivity_analyses:
+    - dnase_source_1_only
+    - dnase_source_2_only
+    - random_genomic_negative
+  remove_if: [invalid_summit, non_acgt, blacklist_overlap, outside_primary_chromosomes, out_of_bounds]
+
+quality_gates:
+  minimum_retained_positive_per_task: 1500
+  minimum_train_per_class: 1000
+  minimum_validation_per_class: 200
+  minimum_test_per_class: 200
+  minimum_h1b_prediction_consistent_test_subgroup: 100
+  primary_matched_negative_rate_min: 0.90
+  sensitivity_matched_negative_rate_min: 0.80
+  fail_if_matched_negative_rate_below: 0.80
+  class_ratio_positive_to_negative: 1.0
+  gc_balance:
+    bin_width: 0.02
+    ks_d_max: 0.10
+  accessibility_balance:
+    transform: log2_signal_plus_1
+    within_task_only: true
+    ks_d_max: 0.10
+  fixed_test:
+    minimum_chromosomes: 3
+    maximum_single_chromosome_fraction: 0.50
+  ctcf_non_support_interpretation:
+    default: inconclusive_not_functional_boundary
+    boundary_language_requires_all_quality_gates: true
+    boundary_language_requires_performance_and_precision_manifest: true
+
+split:
+  unit: chromosome
+  target_fractions: {train: 0.70, validation: 0.15, test: 0.15}
+  assign_after_coordinate_and_sequence_qc: true
+  assign_before_any_model_training: true
+  deterministic_tie_break: lexical_validation_then_test
+  test_policy: one_time_sealed_per_task
+  shared_fixed_test_across_folds: true
+  development_folds: 3
+  fold_scope: rotate_train_and_validation_only
+  test_forbidden_uses: [early_stopping, checkpoint_selection, epoch_selection, threshold_selection, hyperparameter_selection, code_debugging]
+  unseal_condition: all_nine_checkpoints_analysis_code_and_checksums_frozen
+
+leakage_controls:
+  canonical_key: min_sequence_and_reverse_complement
+  reject_cross_split_interval_overlap: true
+  reject_same_source_peak_across_splits: true
+  reject_cross_split_exact_sequence: true
+  reject_cross_split_canonical_key_collision: true
+  near_duplicate_primary:
+    sequence_identity_min: 0.90
+    bidirectional_coverage_min: 0.90
+    reverse_complement_aware: true
+    implementation: scripts/cluster_phase3_near_duplicates.py
+    implementation_version: phase3_near_duplicate_v1
+  near_duplicate_sensitivity:
+    sequence_identity_min: 0.80
+    bidirectional_coverage_min: 0.80
+  cross_split_collision_keep_priority: [test, validation, train]
+  audit_near_duplicates_and_low_complexity: true
+
+models:
+  model_types: [CNN-Raw, CNN-Aug, CNN-RCPS]
+  seeds: [42, 123, 2026]
+  folds_per_task: 3
+  conv_channels: 32
+  kernel_size: 15
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 7
+  batch_size: 128
+  max_epochs: 30
+  patience: 5
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  augmentation_probability: 0.5
+
+endpoints:
+  prediction_threshold: 0.5
+  primary_attribution: exact_ism_logit
+  prediction_consistent_max_abs_difference: 0.01
+  h1a_raw_prediction_ci_lower_gt: 0.01
+  h1b_raw_exact_ism_ci_lower_gt: 0.05
+  h2_aug_minus_raw_prediction_ci_upper_lt: 0.0
+  h3a_aug_exact_ism_ci_lower_gt: 0.05
+  h3b_prediction_max_le: 1.0e-6
+  h3b_exact_ism_matrix_max_le: 1.0e-5
+  bootstrap_replicates: 10000
+  bootstrap_seed: 20260823
+
+success_framework:
+  primary_task: p3_gata1_fetal
+  generalization_task: p3_ctcf_gm12878
+  primary_unit: task_level_hierarchical_estimate
+  resampling_levels: [model_fit, sample]
+  folds_are_independent_biological_replicates: false
+  fold_direction_stability_minimum: 2
+  fold_direction_stability_denominator: 3
+  fold_direction_stability_role: robustness_only_not_success_vote
+  full_replication_requires: [H1a, H1b, H2, H3a, H3b]
+  partial_replication_reporting: hypothesis_by_hypothesis
+  H4_role: separate_mechanistic_diagnostic_not_composite_success
+  transformer_H3c_role: exploratory_only_excluded_from_confirmatory_success
+  ctcf_support: strengthens_cross_tf_external_validity
+  ctcf_non_support: inconclusive_unless_quality_performance_and_precision_gates_pass
+
+post_primary_cross_phase_audit:
+  enabled_before_primary_results_frozen: false
+  timing: after_phase3_primary_results_code_and_manifests_are_frozen
+  p2f_access_mode: isolated_read_only_audit
+  p2f_predictions_or_attributions_allowed: false
+  exact_sequence_method: canonical_sequence_sha256
+  coordinate_method: grch38_interval_overlap
+  kmer_similarity_method: minhash
+  kmer_size: 15
+  minhash_seed: 20260823
+  report_denominators: [fraction_of_p3_train, fraction_of_p2f_test]
+  exact_overlap_rerun_trigger_fraction_of_p3_train: 0.01
+  coordinate_overlap_stratification_trigger_fraction_of_p3_train: 0.05
+  coordinate_overlap_action: report_shared_and_p3_specific_strata_do_not_replace_primary
+  high_similarity_action: rerun_sensitivity_with_primary_90_90_near_duplicate_rule
+  sensitivity_results_replace_primary: false
+
+decision:
+  p3_model_results_observed: false
+  p3_training_allowed: false
+  architecture_search_allowed: false
+  transformer_optimization_allowed: false
+  task_replacement_after_results_allowed: false
+  threshold_change_after_results_allowed: false
+
+execution:
+  output_dir: results/phase3a_external_selection
+  freeze_manifest_path: results/phase3a_external_selection/phase3a_freeze_manifest.json
+  gate_assessment_path: results/phase3a_external_selection/phase3a_gate_assessment.json

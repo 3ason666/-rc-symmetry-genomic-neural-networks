@@ -1,0 +1,13 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.13.0+cpu
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+seaborn
+pyyaml
+pytest
+tqdm
+captum==0.8.0
+rapidfuzz==3.14.1

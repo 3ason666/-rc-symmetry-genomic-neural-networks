@@ -1,0 +1,38 @@
+project_name: phase2a_cnn_pilot
+device: cpu
+cpu_threads: 6
+dataset:
+  path: data/phase2/processed/phase2_matched_dataset.csv
+  sha256: 54928c8be54d310a43a7e4daaf8516ab054775c043a5cabac76fbe60ad034f88
+  sequence_length: 256
+  allowed_training_splits: [train, validation]
+  test_policy: sealed_no_model_access
+model:
+  conv_channels: 32
+  kernel_size: 15
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 7
+training:
+  seeds: [42]
+  model_types: [CNN-Raw, CNN-Aug, CNN-Pair]
+  batch_size: 128
+  max_epochs: 12
+  patience: 3
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  selection_metric: validation_loss
+interpretation:
+  method: exact_ism
+  difference: logit
+  validation_positive_samples: 50
+  validation_hard_negative_samples: 50
+  sample_seed: 2718
+  batch_size: 512
+  top_k: 8
+  prediction_consistent_max_abs_difference: 0.01
+  attribution_pearson_warning_below: 0.90
+  attribution_top8_warning_below: 0.75

@@ -1,0 +1,10 @@
+{
+  "status": "completed_locked",
+  "protocol_revision": "phase3d_cross_phase_overlap_audit_v1",
+  "completed_at_utc": "2026-08-23T04:04:33.870461+00:00",
+  "audit_execution_count": 1,
+  "p2f_test_rows_loaded": 3496,
+  "predictions_or_attributions_accessed": false,
+  "raw_sequences_persisted": false,
+  "audit_summary_sha256": "35107975dddf4cbcd81bba99ce02f948ed6a9fb7cc7b07863de5df2c09fad9ce"
+}

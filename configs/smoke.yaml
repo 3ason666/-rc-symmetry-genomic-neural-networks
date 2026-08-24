@@ -1,0 +1,35 @@
+project_name: rc_attribution_smoke
+device: cpu
+data:
+  sequence_length: 100
+  motif: TGATTTAT
+  train_size: 400
+  validation_size: 100
+  test_size: 100
+  data_seed: 31415
+model:
+  conv_channels: 16
+  kernel_size: 9
+  second_conv: true
+  second_conv_channels: 12
+  second_kernel_size: 5
+training:
+  seeds: [42]
+  model_types: [CNN-Raw, CNN-Aug, CNN-Pair]
+  batch_size: 64
+  max_epochs: 2
+  patience: 2
+  learning_rate: 0.003
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  selection_metric: validation_loss
+interpretation:
+  method: ism
+  difference: logit
+  positive_samples: 20
+  sample_seed: 2718
+  batch_size: 256
+  top_k: 8
+

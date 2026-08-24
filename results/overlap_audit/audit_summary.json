@@ -1,0 +1,227 @@
+{
+  "protocol_revision": "phase3d_cross_phase_overlap_audit_v1",
+  "completed_at_utc": "2026-08-23T04:04:33.870461+00:00",
+  "p2f_access_mode": "isolated_read_only",
+  "p2f_predictions_or_attributions_accessed": false,
+  "raw_sequences_persisted": false,
+  "tasks": {
+    "p3_gata1_fetal": {
+      "p3_union_train_rows": 3316,
+      "p2f_test_rows": 3496,
+      "scope_summaries": {
+        "union": {
+          "p3_train_rows": 3316,
+          "coordinate": {
+            "unique_p3_rows": 275,
+            "fraction_of_p3_train": 0.08293124246079614,
+            "unique_p2f_test_rows": 267,
+            "fraction_of_p2f_test": 0.07637299771167048
+          },
+          "exact": {
+            "unique_p3_rows": 1,
+            "fraction_of_p3_train": 0.00030156815440289503,
+            "unique_p2f_test_rows": 1,
+            "fraction_of_p2f_test": 0.0002860411899313501
+          },
+          "high_similarity": {
+            "unique_p3_rows": 181,
+            "fraction_of_p3_train": 0.054583835946924,
+            "unique_p2f_test_rows": 177,
+            "fraction_of_p2f_test": 0.05062929061784897
+          }
+        },
+        "fold1": {
+          "p3_train_rows": 2844,
+          "coordinate": {
+            "unique_p3_rows": 275,
+            "fraction_of_p3_train": 0.09669479606188466,
+            "unique_p2f_test_rows": 267,
+            "fraction_of_p2f_test": 0.07637299771167048
+          },
+          "exact": {
+            "unique_p3_rows": 1,
+            "fraction_of_p3_train": 0.00035161744022503517,
+            "unique_p2f_test_rows": 1,
+            "fraction_of_p2f_test": 0.0002860411899313501
+          },
+          "high_similarity": {
+            "unique_p3_rows": 181,
+            "fraction_of_p3_train": 0.06364275668073137,
+            "unique_p2f_test_rows": 177,
+            "fraction_of_p2f_test": 0.05062929061784897
+          }
+        },
+        "fold2": {
+          "p3_train_rows": 2844,
+          "coordinate": {
+            "unique_p3_rows": 275,
+            "fraction_of_p3_train": 0.09669479606188466,
+            "unique_p2f_test_rows": 267,
+            "fraction_of_p2f_test": 0.07637299771167048
+          },
+          "exact": {
+            "unique_p3_rows": 1,
+            "fraction_of_p3_train": 0.00035161744022503517,
+            "unique_p2f_test_rows": 1,
+            "fraction_of_p2f_test": 0.0002860411899313501
+          },
+          "high_similarity": {
+            "unique_p3_rows": 181,
+            "fraction_of_p3_train": 0.06364275668073137,
+            "unique_p2f_test_rows": 177,
+            "fraction_of_p2f_test": 0.05062929061784897
+          }
+        },
+        "fold3": {
+          "p3_train_rows": 2844,
+          "coordinate": {
+            "unique_p3_rows": 275,
+            "fraction_of_p3_train": 0.09669479606188466,
+            "unique_p2f_test_rows": 267,
+            "fraction_of_p2f_test": 0.07637299771167048
+          },
+          "exact": {
+            "unique_p3_rows": 1,
+            "fraction_of_p3_train": 0.00035161744022503517,
+            "unique_p2f_test_rows": 1,
+            "fraction_of_p2f_test": 0.0002860411899313501
+          },
+          "high_similarity": {
+            "unique_p3_rows": 181,
+            "fraction_of_p3_train": 0.06364275668073137,
+            "unique_p2f_test_rows": 177,
+            "fraction_of_p2f_test": 0.05062929061784897
+          }
+        }
+      },
+      "pair_counts": {
+        "coordinate": 275,
+        "exact": 1,
+        "high_similarity": 181
+      },
+      "minhash_screening_qc": {
+        "p2f_unique_sketch_hashes": 441796,
+        "p2f_excluded_common_hashes": 0,
+        "candidate_pair_count": 4606,
+        "confirmed_pair_count": 181
+      },
+      "triggers": {
+        "coordinate_stratification": true,
+        "exact_overlap_rerun": false,
+        "high_similarity_rerun": true
+      }
+    },
+    "p3_ctcf_gm12878": {
+      "p3_union_train_rows": 55712,
+      "p2f_test_rows": 3496,
+      "scope_summaries": {
+        "union": {
+          "p3_train_rows": 55712,
+          "coordinate": {
+            "unique_p3_rows": 882,
+            "fraction_of_p3_train": 0.015831418724870764,
+            "unique_p2f_test_rows": 880,
+            "fraction_of_p2f_test": 0.2517162471395881
+          },
+          "exact": {
+            "unique_p3_rows": 15,
+            "fraction_of_p3_train": 0.0002692418150488225,
+            "unique_p2f_test_rows": 15,
+            "fraction_of_p2f_test": 0.004290617848970252
+          },
+          "high_similarity": {
+            "unique_p3_rows": 668,
+            "fraction_of_p3_train": 0.011990235496840897,
+            "unique_p2f_test_rows": 663,
+            "fraction_of_p2f_test": 0.1896453089244851
+          }
+        },
+        "fold1": {
+          "p3_train_rows": 45880,
+          "coordinate": {
+            "unique_p3_rows": 882,
+            "fraction_of_p3_train": 0.019224062772449868,
+            "unique_p2f_test_rows": 880,
+            "fraction_of_p2f_test": 0.2517162471395881
+          },
+          "exact": {
+            "unique_p3_rows": 15,
+            "fraction_of_p3_train": 0.00032693984306887534,
+            "unique_p2f_test_rows": 15,
+            "fraction_of_p2f_test": 0.004290617848970252
+          },
+          "high_similarity": {
+            "unique_p3_rows": 667,
+            "fraction_of_p3_train": 0.014537925021795989,
+            "unique_p2f_test_rows": 663,
+            "fraction_of_p2f_test": 0.1896453089244851
+          }
+        },
+        "fold2": {
+          "p3_train_rows": 45874,
+          "coordinate": {
+            "unique_p3_rows": 749,
+            "fraction_of_p3_train": 0.016327331385970267,
+            "unique_p2f_test_rows": 748,
+            "fraction_of_p2f_test": 0.2139588100686499
+          },
+          "exact": {
+            "unique_p3_rows": 9,
+            "fraction_of_p3_train": 0.00019618956271526356,
+            "unique_p2f_test_rows": 9,
+            "fraction_of_p2f_test": 0.002574370709382151
+          },
+          "high_similarity": {
+            "unique_p3_rows": 563,
+            "fraction_of_p3_train": 0.01227274708985482,
+            "unique_p2f_test_rows": 560,
+            "fraction_of_p2f_test": 0.16018306636155608
+          }
+        },
+        "fold3": {
+          "p3_train_rows": 45882,
+          "coordinate": {
+            "unique_p3_rows": 640,
+            "fraction_of_p3_train": 0.013948825247373698,
+            "unique_p2f_test_rows": 638,
+            "fraction_of_p2f_test": 0.18249427917620137
+          },
+          "exact": {
+            "unique_p3_rows": 13,
+            "fraction_of_p3_train": 0.00028333551283727824,
+            "unique_p2f_test_rows": 13,
+            "fraction_of_p2f_test": 0.0037185354691075517
+          },
+          "high_similarity": {
+            "unique_p3_rows": 489,
+            "fraction_of_p3_train": 0.010657774290571466,
+            "unique_p2f_test_rows": 485,
+            "fraction_of_p2f_test": 0.13872997711670482
+          }
+        }
+      },
+      "pair_counts": {
+        "coordinate": 886,
+        "exact": 15,
+        "high_similarity": 668
+      },
+      "minhash_screening_qc": {
+        "p2f_unique_sketch_hashes": 441796,
+        "p2f_excluded_common_hashes": 0,
+        "candidate_pair_count": 97505,
+        "confirmed_pair_count": 668
+      },
+      "triggers": {
+        "coordinate_stratification": false,
+        "exact_overlap_rerun": false,
+        "high_similarity_rerun": true
+      }
+    }
+  },
+  "overall_triggers": {
+    "coordinate_stratification": true,
+    "exact_overlap_rerun": false,
+    "high_similarity_rerun": true
+  },
+  "primary_p3_results_replaced": false
+}

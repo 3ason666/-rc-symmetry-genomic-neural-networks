@@ -1,0 +1,35 @@
+project_name: rc_attribution_full
+device: cpu
+data:
+  sequence_length: 100
+  motif: TGATTTAT
+  train_size: 8000
+  validation_size: 1000
+  test_size: 1000
+  data_seed: 31415
+model:
+  conv_channels: 32
+  kernel_size: 9
+  second_conv: true
+  second_conv_channels: 24
+  second_kernel_size: 5
+training:
+  seeds: [42, 123, 2026]
+  model_types: [CNN-Raw, CNN-Aug, CNN-Pair]
+  batch_size: 128
+  max_epochs: 20
+  patience: 4
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  threshold: 0.5
+  num_workers: 0
+  augmentation_probability: 0.5
+  selection_metric: validation_loss
+interpretation:
+  method: ism
+  difference: logit
+  positive_samples: 200
+  sample_seed: 2718
+  batch_size: 512
+  top_k: 8
+

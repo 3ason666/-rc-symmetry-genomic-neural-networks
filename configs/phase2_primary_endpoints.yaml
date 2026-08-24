@@ -1,0 +1,72 @@
+schema_version: 1
+frozen_on: "2026-08-21"
+scope: phase2_real_label_task
+
+prediction:
+  target_output: positive_class_logit_and_probability
+  classification_threshold: 0.5
+  rc_difference: abs_probability_difference
+  practical_prediction_consistency_threshold: 0.01
+  report:
+    - mean
+    - median
+    - standard_deviation
+    - p95
+    - maximum
+    - paired_bootstrap_95_ci
+    - symmetry_flip_rate
+    - pearson
+    - spearman
+
+attribution:
+  primary_method: exact_ISM_logit_difference
+  primary_position_view: absolute_mean_over_three_alternate_bases
+  retain_signed_values: true
+  rc_alignment:
+    reverse_position_axis: true
+    channel_mapping: {A: T, C: G, G: C, T: A}
+  prediction_consistent_subset: abs_probability_difference_le_0.01
+  practical_attribution_asymmetry:
+    pearson_below: 0.90
+    or_top8_overlap_below: 0.75
+  report:
+    - pearson
+    - spearman
+    - cosine
+    - normalized_l1
+    - top8_overlap
+    - aligned_max_abs_error
+
+hypothesis_tests:
+  H1a:
+    comparison: CNN-Raw_S_vs_RC
+    primary_endpoint: mean_abs_probability_difference
+    practical_effect_threshold: 0.01
+  H1b:
+    subset: prediction_consistent_subset
+    primary_endpoint: median_attribution_pearson
+    practical_rule: pearson_below_0.90_or_top8_overlap_below_0.75
+  H2:
+    comparison: CNN-Aug_and_CNN-Pair_vs_CNN-Raw
+    primary_endpoint: paired_change_in_abs_probability_difference
+  H3a:
+    comparison: prediction_consistency_matched_CNN-Aug_vs_CNN-RCPS
+    primary_endpoint: paired_change_in_attribution_normalized_l1
+  H3b:
+    comparison: CNN-RCPS_S_vs_RC
+    prediction_max_abs_tolerance: 1.0e-6
+    exact_ISM_aligned_max_abs_tolerance: 1.0e-5
+  H3c:
+    comparison: matched_Transformer-Aug_vs_CNN-Aug
+    primary_endpoint: attribution_normalized_l1
+  H4:
+    primary_endpoint: attribution_localization_against_motif_and_summit
+
+statistics:
+  unit: original_test_sequence
+  seed_level: 3_independent_training_seeds
+  confidence_interval: 95
+  bootstrap_replicates: 2000
+  multiple_testing: Benjamini-Hochberg_FDR
+  test_set_blinding: no_model_result_until_protocol_and_split_frozen
+

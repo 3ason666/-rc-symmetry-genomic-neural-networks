@@ -1,0 +1,78 @@
+{
+  "freeze_id": "phase3d_phase3e_final_narrative_freeze_v1",
+  "freeze_date_local": "2026-08-24",
+  "status": "frozen_terminal_for_current_datasets",
+  "phase3d_status": "completed_locked",
+  "phase3e_status": "completed_locked",
+  "phase3e_role": "sensitivity_only",
+  "primary_phase3_results_replaced": false,
+  "analysis_policy": {
+    "ctcf_h2_further_tuning": "prohibited",
+    "post_test_retraining": "prohibited",
+    "threshold_or_sample_selection_changes": "prohibited",
+    "frozen_output_modification": "prohibited",
+    "new_independent_dataset": "allowed_only_as_new_preregistered_replication"
+  },
+  "frozen_ctcf_h2_narrative": {
+    "phase3c_primary": "supported",
+    "phase3e_near_duplicate_sensitivity": "not_reproduced_ci_crosses_zero",
+    "integrated_interpretation": "negative direction retained, but robustness is sensitivity-qualified and not unconditional"
+  },
+  "sources": [
+    {
+      "path": "results/phase3d_cross_phase_overlap_audit/audit_summary.json",
+      "sha256": "35107975dddf4cbcd81bba99ce02f948ed6a9fb7cc7b07863de5df2c09fad9ce",
+      "bytes": 7610
+    },
+    {
+      "path": "results/phase3d_cross_phase_overlap_audit/completion.json",
+      "sha256": "eb42f0f82a4580ad9afdeb084171d41feccce03a8d9a77b20a90c0ad24f8ad48",
+      "bytes": 397
+    },
+    {
+      "path": "results/phase3d_cross_phase_overlap_audit/input_audit.json",
+      "sha256": "40dfabd4b0cb917218ffb2682c6942064a58eb9d42cdc065b44ebd544601efef",
+      "bytes": 2145
+    },
+    {
+      "path": "results/phase3e_near_duplicate_sensitivity/completion.json",
+      "sha256": "f0d7a392d15304022c3ad60e70476ad56b1e60e6e14363c3e27350dd99d9569d",
+      "bytes": 382
+    },
+    {
+      "path": "results/phase3e_near_duplicate_sensitivity/evaluation/phase3e_sensitivity_decision.json",
+      "sha256": "33ecfbf2465867a957afaecbb43b1bd9ec9a06ba14b92efb9332b7e43cbce05c",
+      "bytes": 624
+    },
+    {
+      "path": "results/phase3e_near_duplicate_sensitivity/evaluation/p3_gata1_fetal/test_confirmatory_bootstrap.csv",
+      "sha256": "23c6d5f799191609629413cda0652d75d0ebaad72f3c7d5d6e8bb7c98ff73a9c",
+      "bytes": 942
+    },
+    {
+      "path": "results/phase3e_near_duplicate_sensitivity/evaluation/p3_ctcf_gm12878/test_confirmatory_bootstrap.csv",
+      "sha256": "8bae15e9d8edf6abda18ac538990c88a809b40f09443175c7f85b540ebbf000e",
+      "bytes": 991
+    },
+    {
+      "path": "results/phase3c_one_time_test/phase3c_completion.json",
+      "sha256": "274402579b0b6d39753fddcb6832c38e177fc9649a313f6cca92f32dc8d34d95",
+      "bytes": 277
+    },
+    {
+      "path": "results/phase3c_one_time_test/phase3c_overall_decision.json",
+      "sha256": "9a6a5bd7f613c0d7de076266f0aab3070ecdc5ca08c2b38c37ad0ec6749279eb",
+      "bytes": 519
+    },
+    {
+      "path": "results/phase3c_one_time_test/p3_gata1_fetal/test_confirmatory_bootstrap.csv",
+      "sha256": "8ce544b5cd0fe6e6c4f96949a9860103f92f0ed3101cf3ec84f64d7f025d74e1",
+      "bytes": 940
+    },
+    {
+      "path": "results/phase3c_one_time_test/p3_ctcf_gm12878/test_confirmatory_bootstrap.csv",
+      "sha256": "73281d03004581997d4cd8c9f04cb73aa07a7e754474944f19783ecdd8d84540",
+      "bytes": 995
+    }
+  ]
+}

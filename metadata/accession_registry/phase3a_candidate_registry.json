@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-08-23",
+  "results_observed_before_selection": false,
+  "confirmatory_tasks": [
+    {
+      "task_id": "p3_gata1_fetal",
+      "selection_status": "selected_confirmatory",
+      "selection_reason": "Same TF as Phase 2, but primary fetal erythroblasts instead of K562; released GRCh38 IDR peaks and cell-state-matched DNase resources are available.",
+      "experiment": {
+        "accession": "ENCSR000EXR",
+        "url": "https://www.encodeproject.org/experiments/ENCSR000EXR/",
+        "assay": "TF ChIP-seq",
+        "target": "GATA1",
+        "biosample": "Homo sapiens embryo (16-19 weeks) erythroblast primary cell",
+        "replication": "isogenic biological replicates 1 and 2",
+        "status": "released",
+        "assembly": "GRCh38",
+        "audit_snapshot": {"ERROR": 0, "NOT_COMPLIANT": 0, "WARNING": 13}
+      },
+      "files": [
+        {
+          "role": "primary_positive_peaks",
+          "accession": "ENCFF802VPT",
+          "url": "https://www.encodeproject.org/files/ENCFF802VPT/@@download/ENCFF802VPT.bed.gz",
+          "format": "bed narrowPeak",
+          "output_type": "IDR thresholded peaks",
+          "status": "released",
+          "assembly": "GRCh38",
+          "biological_replicates": [1, 2],
+          "pipeline": "ENCODE4 v1.6.1 GRCh38",
+          "file_size": 47395,
+          "md5sum": "1f6b14758384c40a6c4db5b4ddbed4ed",
+          "content_md5sum": "630175fa10bace87d646f5360475819b"
+        },
+        {
+          "role": "conservative_positive_sensitivity",
+          "accession": "ENCFF305RPQ",
+          "url": "https://www.encodeproject.org/files/ENCFF305RPQ/@@download/ENCFF305RPQ.bed.gz",
+          "format": "bed narrowPeak",
+          "output_type": "conservative IDR thresholded peaks",
+          "status": "released",
+          "assembly": "GRCh38",
+          "biological_replicates": [1, 2],
+          "pipeline": "ENCODE4 v1.6.1 GRCh38",
+          "file_size": 38859,
+          "md5sum": "ab71f5f901db7278bceee52724c5f113",
+          "content_md5sum": "0afcec131ea565d202480f4d94f17a1f"
+        },
+        {
+          "role": "accessibility_union_member_fdr_0_01",
+          "experiment_accession": "ENCSR059YWJ",
+          "accession": "ENCFF253NOJ",
+          "url": "https://www.encodeproject.org/files/ENCFF253NOJ/@@download/ENCFF253NOJ.bed.gz",
+          "format": "bed bed3+",
+          "output_type": "peaks",
+          "status": "released",
+          "assembly": "GRCh38",
+          "biological_replicates": [1],
+          "pipeline": "Hotspot3 v1.0.1, FDR 0.01",
+          "file_size": 4360563,
+          "md5sum": "8c65e695d54cc1639eb1e696def874c2",
+          "content_md5sum": "08809b42d29bd18e10ea9f3b5dfa23b9"
+        },
+        {
+          "role": "accessibility_union_member_fdr_0_01",
+          "experiment_accession": "ENCSR514POY",
+          "accession": "ENCFF404PZM",
+          "url": "https://www.encodeproject.org/files/ENCFF404PZM/@@download/ENCFF404PZM.bed.gz",
+          "format": "bed bed3+",
+          "output_type": "peaks",
+          "status": "released",
+          "assembly": "GRCh38",
+          "biological_replicates": [1],
+          "pipeline": "Hotspot3 v1.0.1, FDR 0.01",
+          "file_size": 3881044,
+          "md5sum": "107ee6446ad473293e1ac8c1850a0ae4",
+          "content_md5sum": "adea610f395d059ecaecf3b0f7da2811"
+        }
+      ],
+      "known_limitations": [
+        "The DNase experiments are independent unreplicated fetal erythroblast profiles.",
+        "The accessibility and ChIP experiments are cell-state matched but not the same physical biosample.",
+        "The older source experiment has ENCODE audit warnings; only released current-pipeline GRCh38 processed files are selected."
+      ]
+    },
+    {
+      "task_id": "p3_ctcf_gm12878",
+      "selection_status": "selected_confirmatory",
+      "selection_reason": "Different TF and different cell line, with replicated GRCh38 ChIP-seq and a modern three-replicate GM12878 ATAC resource.",
+      "experiment": {
+        "accession": "ENCSR000DZN",
+        "url": "https://www.encodeproject.org/experiments/ENCSR000DZN/",
+        "assay": "TF ChIP-seq",
+        "target": "CTCF",
+        "biosample": "Homo sapiens GM12878 cell line",
+        "replication": "isogenic biological replicates 1 and 2",
+        "status": "released",
+        "assembly": "GRCh38",
+        "audit_snapshot": {"ERROR": 0, "NOT_COMPLIANT": 4, "WARNING": 8}
+      },
+      "files": [
+        {
+          "role": "primary_positive_peaks",
+          "accession": "ENCFF138REW",
+          "url": "https://www.encodeproject.org/files/ENCFF138REW/@@download/ENCFF138REW.bed.gz",
+          "format": "bed narrowPeak",
+          "output_type": "IDR thresholded peaks",
+          "status": "released",
+          "assembly": "GRCh38",
+          "biological_replicates": [1, 2],
+          "pipeline": "ENCODE4 v1.5.1 GRCh38",
+          "file_size": 652581,
+          "md5sum": "3968ab8d0df7ec3946587dc2bdd4152b",
+          "content_md5sum": "f486627c2be75b9888cbd5e8d0810bd7"
+        },
+        {
+          "role": "conservative_positive_sensitivity",
+          "accession": "ENCFF796WRU",
+          "url": "https://www.encodeproject.org/files/ENCFF796WRU/@@download/ENCFF796WRU.bed.gz",
+          "format": "bed narrowPeak",
+          "output_type": "conservative IDR thresholded peaks",
+          "status": "released",
+          "assembly": "GRCh38",
+          "biological_replicates": [1, 2],
+          "pipeline": "ENCODE4 v1.5.1 GRCh38",
+          "file_size": 711745,
+          "md5sum": "3f36655eb9a421a542ff031fc7b5e9aa",
+          "content_md5sum": "76759c8ed2c52df60909cbb063c8cad4"
+        },
+        {
+          "role": "accessible_negative_pool",
+          "experiment_accession": "ENCSR637XSC",
+          "accession": "ENCFF687HBT",
+          "url": "https://www.encodeproject.org/files/ENCFF687HBT/@@download/ENCFF687HBT.bed.gz",
+          "format": "bed narrowPeak",
+          "output_type": "replicated peaks",
+          "status": "released",
+          "assembly": "GRCh38",
+          "biological_replicates": [1, 2, 3],
+          "pipeline": "ENCODE4 v1.9.1 GRCh38",
+          "file_size": 7010624,
+          "md5sum": "d10d1f19b5676e7942c5f07e794bb8dc",
+          "content_md5sum": "008c081a9d08b5d0a0ad37d9b93fd582",
+          "quality_snapshot": {"FRiP": 0.47518250325973455, "reproducible_peaks": 273124}
+        }
+      ],
+      "known_limitations": [
+        "The original ChIP experiment is from ENCODE2 and has current portal audit warnings/not-compliant items.",
+        "Selected processed files are released GRCh38 outputs from a later uniform pipeline.",
+        "ATAC and ChIP are biosample-type matched but not the same experimental batch."
+      ]
+    }
+  ],
+  "documented_alternatives_not_selected": [
+    {
+      "accession": "ENCSR000EXP",
+      "reason": "Primary peripheral-blood erythroblast GATA1 is relevant, but its unknown life stage is less closely matched to available fetal erythroblast accessibility data than ENCSR000EXR."
+    },
+    {
+      "accession": "GSE43625",
+      "reason": "Independent primary erythroid GATA1 evidence is valuable, but the processed coordinates are hg18 and require lift-over; retained as later sensitivity evidence."
+    },
+    {
+      "accession": "GSM3523237",
+      "reason": "Human erythroid progenitor GATA1 is relevant, but available summarized processed output is hg19 signal rather than a ready frozen GRCh38 peak task."
+    },
+    {
+      "accession": "ENCSR000DIL",
+      "reason": "Mouse embryonic erythroblast GATA1 is a cross-species stress test, not part of the confirmatory human task family."
+    }
+  ],
+  "forbidden_phase2_development_resources": ["ENCSR000EFT", "ENCSR000EWM", "ENCSR868FGK"],
+  "official_source_policy": "Released ENCODE portal file metadata and JASPAR 2026 motif records only for frozen primary resources."
+}
+

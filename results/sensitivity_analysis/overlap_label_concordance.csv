@@ -1,0 +1,7 @@
+task_id,method,pair_count,label_concordant_pairs,label_concordance_fraction
+p3_ctcf_gm12878,coordinate,886,220,0.24830699774266365
+p3_gata1_fetal,coordinate,275,203,0.7381818181818182
+p3_ctcf_gm12878,exact,15,2,0.13333333333333333
+p3_gata1_fetal,exact,1,1,1.0
+p3_ctcf_gm12878,high_similarity,668,131,0.19610778443113772
+p3_gata1_fetal,high_similarity,181,137,0.7569060773480663

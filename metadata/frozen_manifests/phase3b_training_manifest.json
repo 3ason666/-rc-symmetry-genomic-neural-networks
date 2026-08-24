@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-22T20:04:08.015490+00:00",
+  "status": "frozen_for_p3b_training",
+  "formal_training_allowed": true,
+  "test_unsealing_allowed": false,
+  "models": [
+    "CNN-Raw",
+    "CNN-Aug",
+    "CNN-RCPS"
+  ],
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "folds": [
+    1,
+    2,
+    3
+  ],
+  "expected_checkpoints_per_task": 27,
+  "test_forbidden_uses": [
+    "early_stopping",
+    "checkpoint_selection",
+    "epoch_selection",
+    "threshold_selection",
+    "hyperparameter_selection",
+    "code_debugging"
+  ],
+  "gate_path": "results\\phase3a_external_selection\\phase3a_final_gate.json",
+  "gate_sha256": "661ce4f8bda3843b992a7c727fbc76ab0c0dc4ec1f7e1152c93aff958d3e88d9",
+  "config_sha256": "8c238452db8648f446ee6a139ef62201d8a084d489d1d9d59be230a951413cd6",
+  "protocol_sha256": "70a21a50bf1722f8e7c44d508e93389ce9b8fe93d538c2cbfab5f5346363cdf3",
+  "tasks": {
+    "p3_gata1_fetal": {
+      "development_path": "data\\phase3\\processed\\p3_gata1_fetal_development.csv.gz",
+      "development_sha256": "616050adf909aca84016403eb7ea3b877aabb98952fd9664672012494407e8ab",
+      "development_rows": 3454,
+      "sealed_test_path": "data\\phase3\\processed\\p3_gata1_fetal_sealed_test.csv.gz",
+      "sealed_test_sha256": "56357841b7241294d81900a7f641e76a1fe1385ab49454fb444913c2f23dce1a",
+      "sealed_test_rows": 610,
+      "test_access_allowed": false,
+      "fixed_test_chromosomes": [
+        "chr11",
+        "chr12",
+        "chr14"
+      ],
+      "fold_partitions": [
+        {
+          "fold": 1,
+          "validation": [
+            "chr1",
+            "chr16"
+          ],
+          "train": [
+            "chr2",
+            "chr3",
+            "chr4",
+            "chr5",
+            "chr6",
+            "chr7",
+            "chr8",
+            "chr9",
+            "chr10",
+            "chr13",
+            "chr15",
+            "chr17",
+            "chr18",
+            "chr19",
+            "chr20",
+            "chr21",
+            "chr22"
+          ]
+        },
+        {
+          "fold": 2,
+          "validation": [
+            "chr2",
+            "chr4",
+            "chr16"
+          ],
+          "train": [
+            "chr1",
+            "chr3",
+            "chr5",
+            "chr6",
+            "chr7",
+            "chr8",
+            "chr9",
+            "chr10",
+            "chr13",
+            "chr15",
+            "chr17",
+            "chr18",
+            "chr19",
+            "chr20",
+            "chr21",
+            "chr22"
+          ]
+        },
+        {
+          "fold": 3,
+          "validation": [
+            "chr2",
+            "chr9",
+            "chr16"
+          ],
+          "train": [
+            "chr1",
+            "chr3",
+            "chr4",
+            "chr5",
+            "chr6",
+            "chr7",
+            "chr8",
+            "chr10",
+            "chr13",
+            "chr15",
+            "chr17",
+            "chr18",
+            "chr19",
+            "chr20",
+            "chr21",
+            "chr22"
+          ]
+        }
+      ]
+    },
+    "p3_ctcf_gm12878": {
+      "development_path": "data\\phase3\\processed\\p3_ctcf_gm12878_development.csv.gz",
+      "development_sha256": "219cfdf4a3bedf1fd9dbe0e7ca30b27e0b67e27a4a16952dbacc8b2d6fc3a451",
+      "development_rows": 55712,
+      "sealed_test_path": "data\\phase3\\processed\\p3_ctcf_gm12878_sealed_test.csv.gz",
+      "sealed_test_sha256": "ed525f3137b7ad1487e48da032d86a1fd1e3d67fc035e870b3fb001884f55a01",
+      "sealed_test_rows": 9846,
+      "test_access_allowed": false,
+      "fixed_test_chromosomes": [
+        "chr11",
+        "chr16",
+        "chr19",
+        "chr22"
+      ],
+      "fold_partitions": [
+        {
+          "fold": 1,
+          "validation": [
+            "chr9",
+            "chr15",
+            "chr17",
+            "chr20"
+          ],
+          "train": [
+            "chr1",
+            "chr2",
+            "chr3",
+            "chr4",
+            "chr5",
+            "chr6",
+            "chr7",
+            "chr8",
+            "chr10",
+            "chr12",
+            "chr13",
+            "chr14",
+            "chr18",
+            "chr21"
+          ]
+        },
+        {
+          "fold": 2,
+          "validation": [
+            "chr5",
+            "chr13",
+            "chr14",
+            "chr15"
+          ],
+          "train": [
+            "chr1",
+            "chr2",
+            "chr3",
+            "chr4",
+            "chr6",
+            "chr7",
+            "chr8",
+            "chr9",
+            "chr10",
+            "chr12",
+            "chr17",
+            "chr18",
+            "chr20",
+            "chr21"
+          ]
+        },
+        {
+          "fold": 3,
+          "validation": [
+            "chr8",
+            "chr9",
+            "chr12",
+            "chr21"
+          ],
+          "train": [
+            "chr1",
+            "chr2",
+            "chr3",
+            "chr4",
+            "chr5",
+            "chr6",
+            "chr7",
+            "chr10",
+            "chr13",
+            "chr14",
+            "chr15",
+            "chr17",
+            "chr18",
+            "chr20"
+          ]
+        }
+      ]
+    }
+  }
+}

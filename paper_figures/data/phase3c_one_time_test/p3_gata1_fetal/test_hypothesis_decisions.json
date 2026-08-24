@@ -1,0 +1,37 @@
+[
+  {
+    "hypothesis": "H1a",
+    "status": "reproduced",
+    "evidence": "CI lower=0.0935669"
+  },
+  {
+    "hypothesis": "H1b",
+    "status": "not_estimable",
+    "evidence": "eligible pool=76"
+  },
+  {
+    "hypothesis": "H2",
+    "status": "reproduced",
+    "evidence": "contrast CI upper=-0.0166802"
+  },
+  {
+    "hypothesis": "H3a",
+    "status": "reproduced",
+    "evidence": "CI lower=0.306143"
+  },
+  {
+    "hypothesis": "H3b",
+    "status": "reproduced",
+    "evidence": "prediction max=0; ISM max=7.15256e-07"
+  },
+  {
+    "hypothesis": "H3c",
+    "status": "exploratory_not_retested",
+    "evidence": "Transformer excluded from confirmatory Phase 3C"
+  },
+  {
+    "hypothesis": "H4",
+    "status": "diagnostic_distinction_observed",
+    "evidence": "CI=[0.559524,0.710317]"
+  }
+]
